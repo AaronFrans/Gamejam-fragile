@@ -13,7 +13,6 @@ using UnityEngine.UIElements;
 public class _playerMovement : MonoBehaviour
 {
 
-
     CharacterController _controller;
 
     [SerializeField]
@@ -138,43 +137,4 @@ public class _playerMovement : MonoBehaviour
         return false;
     }
 
-    void MovePlayer()
-    {
-        //Get input
-        float horizontal = Input.GetAxis("Horizontal");
-        float vertical = Input.GetAxis("Vertical");
-
-        //Put the input into a vectors
-        Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
-
-
-        //Check if there is any input, otherwise return.
-        if (direction.magnitude >= 0.1f)
-        {
-            _controller.Move(direction * _movementSpeed * Time.deltaTime);
-         //      //Get angle between the direction of player and camera rotation
-         //      float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + _cameraTransform.eulerAngles.y;
-         //     
-         //      //Make it so player doesn't snap at angle, but rather moves towards it smoothly
-         //      float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref _turnSmoothVelocity, _turnSmoothTime);
-         //      transform.rotation = Quaternion.Euler(0f, angle, 0f);
-         //     
-         //      //Make the player move in the direction of the camera rotation.
-         //      Vector3 movementDirection = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
-         //     
-         //      //Move the player in the world space.
-         //      //_controller.Move(movementDirection.normalized * _movementSpeed * Time.deltaTime);
-         //     
-         //      transform.position = movementDirection * Time.deltaTime;
-        }
-    }
-
-    void LetPlayerJump()
-    {
-        if (Input.GetKeyDown(KeyCode.Space) && _isOnGround)
-        {
-            _playerRigidBody.AddForce(Vector3.up * _jumpforce, ForceMode.Impulse);
-            _isOnGround = false;
-        }
-    }
 }
