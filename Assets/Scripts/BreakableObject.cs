@@ -6,14 +6,14 @@ public class BreakableObject : MonoBehaviour
 {
     //The collider for interactions
     [SerializeField]
-    private BoxCollider _collider;
+    private BoxCollider _collider = null;
 
     // max amount of health
     [SerializeField]
-    private float _health;
+    private float _health = 0;
 
     [SerializeField]
-    private GameObject _self;
+    private GameObject _self = null;
 
 
     // Start is called before the first frame update
