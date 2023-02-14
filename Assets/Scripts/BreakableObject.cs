@@ -36,8 +36,6 @@ public class BreakableObject : MonoBehaviour
             RaycastHit hasHit;
             if (_collider.Raycast(ray, out hasHit, 100))
             {
-
-                Debug.Log(_health);
                 _health -= 1;
                 if (_health <= 0)
                 {
