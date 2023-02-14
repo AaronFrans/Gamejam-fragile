@@ -15,8 +15,10 @@ public class BreakableObject : MonoBehaviour
     [SerializeField]
     private GameObject _self = null;
 
+
     [SerializeField]
     private AudioClip _breakAudio;
+
 
 
     // Start is called before the first frame update
