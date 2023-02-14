@@ -153,3 +153,4 @@ MonoBehaviour:
   _collider: {fileID: 2364010298528574830}
   _health: 0
   _self: {fileID: 0}
+  _breakAudio: {fileID: 8300000, guid: c007f418be43c11488ae2b3acce3fed6, type: 3}

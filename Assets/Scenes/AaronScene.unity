@@ -549,6 +549,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3950487662231511113, guid: d2e34f65018f1904e9cb707c70ba272b, type: 3}
+      propertyPath: MaxDistance
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 3950487662231511113, guid: d2e34f65018f1904e9cb707c70ba272b, type: 3}
+      propertyPath: MinDistance
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 3950487662231511113, guid: d2e34f65018f1904e9cb707c70ba272b, type: 3}
+      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5519153485555759128, guid: d2e34f65018f1904e9cb707c70ba272b, type: 3}
       propertyPath: m_Name
       value: BreakableObject
