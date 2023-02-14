@@ -17,6 +17,7 @@ public class _playerMovement : MonoBehaviour
 
     [SerializeField]
     public float _movementSpeed = 6.0f;
+    
 
     [SerializeField]
     public float _jumpforce = 5.0f;
@@ -27,11 +28,18 @@ public class _playerMovement : MonoBehaviour
     [SerializeField]
     private Camera _followCamera;
 
+
     Rigidbody _playerRigidBody;
     Vector3 _playerVelocity;
     bool _isOnGround = true;
-    private float _gravityValue = -9.81f;
+    float _gravityValue = -9.81f;
 
+    int _amountJumped;
+    public bool _hasUnlockedDoubleJump = false;
+
+    public bool _hasUnlockedGrappleHook = false;
+    public bool _hasUnlockedFasterAccel = false;
+    
 
     private void Start()
     {
@@ -53,6 +61,7 @@ public class _playerMovement : MonoBehaviour
         if (_isOnGround && _playerVelocity.y < 0)
         {
             _playerVelocity.y = 0;
+            _amountJumped = 0;
         }
 
         //Get input
@@ -71,9 +80,15 @@ public class _playerMovement : MonoBehaviour
         }
 
         
-        if(Input.GetButtonDown("Jump") && _isOnGround)
+        if(Input.GetButtonDown("Jump") && _amountJumped < 2 && _hasUnlockedDoubleJump)
         {
             _playerVelocity.y += Mathf.Sqrt(_jumpforce * -3.0f * _gravityValue);
+            ++_amountJumped;
+        }
+        else if(Input.GetButtonDown("Jump") && _amountJumped < 1)
+        {
+            _playerVelocity.y += Mathf.Sqrt(_jumpforce * -3.0f * _gravityValue);
+            ++_amountJumped;
         }
 
         _playerVelocity.y += (_gravityValue * 3f) * Time.deltaTime;
@@ -136,5 +151,4 @@ public class _playerMovement : MonoBehaviour
         }
         return false;
     }
-
 }
