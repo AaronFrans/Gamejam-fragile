@@ -370,6 +370,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5364720070561642205, guid: 339d0a953fd7fe74ba2603c12fd8a11b, type: 3}
+      propertyPath: _finalUpgradePrice
+      value: 500
+      objectReference: {fileID: 0}
     - target: {fileID: 6084781746781933637, guid: 339d0a953fd7fe74ba2603c12fd8a11b, type: 3}
       propertyPath: m_Name
       value: GameUI
