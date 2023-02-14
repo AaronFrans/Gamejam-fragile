@@ -15,6 +15,8 @@ public class BreakableObject : MonoBehaviour
     [SerializeField]
     private GameObject _self = null;
 
+    
+
 
     // Start is called before the first frame update
     void Start()
