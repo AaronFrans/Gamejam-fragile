@@ -14,18 +14,17 @@ public class PauseMenu : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //_pauseMenuUI.SetActive(true);
+        if (_pauseMenuUI == null)
+            Debug.Log("no _pauseMenuUI set");
+
+        _pauseMenuUI.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("Fuck Unity");
-
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetButtonUp("Cancel"))
         {
-            Debug.Log("It's shit");
-
             if (_isGamePaused)
                 ResumeGame();
             else
