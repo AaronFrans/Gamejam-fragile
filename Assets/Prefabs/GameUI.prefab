@@ -329,10 +329,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _text: {fileID: 3793923522186063410}
-  _copperValue: 0
-  _silverValue: 0
-  _goldValue: 0
   _finalUpgradePrice: 0
+  currency: 0
 --- !u!1 &6084781746781933637
 GameObject:
   m_ObjectHideFlags: 0
@@ -514,4 +512,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _text: {fileID: 8668324254233197878}
-  _secondsUntilEnd: 0
+  _secondsUntilEnd: 60
