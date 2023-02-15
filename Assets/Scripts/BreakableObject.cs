@@ -7,14 +7,19 @@ public class BreakableObject : MonoBehaviour
 {
     //The collider for interactions
     [SerializeField]
-    private BoxCollider _collider;
+    private BoxCollider _collider = null;
 
     // max amount of health
     [SerializeField]
-    private float _health;
+    private float _health = 0;
 
     [SerializeField]
-    private GameObject _self;
+    private GameObject _self = null;
+
+
+    [SerializeField]
+    private AudioClip _breakAudio;
+
 
     [SerializeField] private string _name;
     [SerializeField] private GameObject _player;
@@ -83,6 +88,7 @@ public class BreakableObject : MonoBehaviour
     {
         for(int i = 0; i < topParentGameObject.transform.childCount; ++i)
         {
+
             if (topParentGameObject.transform.GetChild(i).name == gameObjectName)
                 return topParentGameObject.transform.GetChild(i).gameObject;
 
@@ -90,6 +96,20 @@ public class BreakableObject : MonoBehaviour
 
             if (temp != null)
                 return temp;
+
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hasHit;
+            if (_collider.Raycast(ray, out hasHit, 100))
+            {
+
+                Debug.Log(_health);
+                _health -= 1;
+                if (_health <= 0)
+                {
+                    AudioSource.PlayClipAtPoint(_breakAudio, transform.position); 
+                    Destroy(_self);
+                }
+            }
         }
 
 
