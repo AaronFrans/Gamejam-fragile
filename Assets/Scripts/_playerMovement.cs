@@ -16,7 +16,7 @@ public class _playerMovement : MonoBehaviour
     CharacterController _controller;
 
     [SerializeField]
-    public float _movementSpeed = 6.0f;
+    static public float _movementSpeed = 6.0f;
     
 
     [SerializeField]
@@ -35,10 +35,12 @@ public class _playerMovement : MonoBehaviour
     float _gravityValue = -9.81f;
 
     int _amountJumped;
-    public bool _hasUnlockedDoubleJump = false;
+    static public bool _hasUnlockedDoubleJump = false;
 
-    public bool _hasUnlockedGrappleHook = false;
-    public bool _hasUnlockedFasterAccel = false;
+    static public bool _hasUnlockedGrappleHook = false;
+    static public bool _hasUnlockedSpeedBoost = false;
+    static public bool _hasUnlockedExtraDamage = false;
+    static public bool _hasUnlockedExtraCoinValue = false;
     
 
     private void Start()
