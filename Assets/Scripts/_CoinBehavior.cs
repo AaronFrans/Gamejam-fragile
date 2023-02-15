@@ -17,7 +17,6 @@ public class _CoinBehavior : MonoBehaviour
     private float _zSpread;
     public int _frustrumSize;
     Vector3 _TotalSpread;
-    private float _gravity = -9.81f;
 
     Rigidbody _Rigidbody;
 
