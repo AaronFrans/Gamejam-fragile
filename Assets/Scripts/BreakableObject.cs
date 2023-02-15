@@ -1,7 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using Random = System.Random;
 
 public class BreakableObject : MonoBehaviour
 {
@@ -24,10 +26,16 @@ public class BreakableObject : MonoBehaviour
     [SerializeField] private string _name;
     [SerializeField] private GameObject _player;
 
+    [SerializeField] 
+    private Renderer _selfRender;
+
     
     bool _isPlayerAttacking;
     bool _playerWithinRange;
     GameObject _playerLogicObject;
+
+
+    private Currency.CurrencyType _rarity;
 
 
     // Start is called before the first frame update
@@ -39,7 +47,36 @@ public class BreakableObject : MonoBehaviour
         if (_self == null)
             Debug.Log("no _self set");
 
+
         _playerLogicObject = FindChildGameObjectByName(_player, _name);
+
+        SetMaterial();
+    }
+
+    private void SetMaterial()
+    {
+        Array values = Enum.GetValues(typeof(Currency.CurrencyType));
+        Random random = new Random();
+
+        _rarity = (Currency.CurrencyType)values.GetValue(random.Next(values.Length));
+        SetColorFromRarity();
+    }
+
+    private void SetColorFromRarity()
+    {
+        switch (_rarity)
+        {
+            case Currency.CurrencyType.copper:
+                _selfRender.material.color = new Color(1, 0, 0);
+                break;
+            case Currency.CurrencyType.silver:
+                _selfRender.material.color = new Color(0, 1, 0);
+                break;
+            case Currency.CurrencyType.gold:
+                _selfRender.material.color = new Color(0, 0, 1);
+                break;
+
+        }
     }
 
     // Update is called once per frame
