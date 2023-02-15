@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using TMPro.EditorUtilities;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Timer : MonoBehaviour
 {
@@ -36,6 +37,8 @@ public class Timer : MonoBehaviour
         if (_hasStarted)
         {
             _secondsUntilEnd -= Time.deltaTime;
+            if (_secondsUntilEnd < 0)
+                SceneManager.LoadScene("ShopScene");
             UpdateText();
         }
     }
