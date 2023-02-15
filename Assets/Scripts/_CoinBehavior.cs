@@ -8,16 +8,15 @@ public class _CoinBehavior : MonoBehaviour
 
     [SerializeField] public float _scaleLimitMin;
     [SerializeField] public float _scaleLimitMax;
-    [SerializeField] private Patch _coinPatch;
 
     public Currency.CurrencyType _currentType;
 
-    private AudioSource _coinSource;
     private MeshRenderer _selfRender;
-    private bool _hasPlayed;
-    private bool _hasSpawned;
-    private string CONFIRM_SPAWN;
+    private float _xSpread;
+    private float _ySpread;
+    private float _zSpread;
     public int _frustrumSize;
+    Vector3 _TotalSpread;
 
     Rigidbody _Rigidbody;
 
@@ -26,16 +25,12 @@ public class _CoinBehavior : MonoBehaviour
     {
         _currentType = (Currency.CurrencyType)Random.Range(0, 3);
 
-        _coinSource = GetComponent<AudioSource>();
+
         _Rigidbody = GetComponent<Rigidbody>();
         _selfRender = GetComponent<MeshRenderer>();
-        _hasSpawned= false;
-        CONFIRM_SPAWN = "ConfirmSpawn";
-        Invoke(CONFIRM_SPAWN,0.5f);
 
         float scaleLimit = Random.Range(_scaleLimitMin, _scaleLimitMax);
         Vector3 direction = Random.insideUnitCircle;
-        
         direction.z = direction.y; // circle is at Z units 
         direction.y = 1; // circle is at Z units 
 
@@ -64,24 +59,8 @@ public class _CoinBehavior : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-
-        if (collision.transform.tag != "Coin" && _hasSpawned)
-        {
-            if (!_hasPlayed)
-            {
-                _coinPatch.Play(_coinSource);
-                _hasPlayed = true;
-                Destroy(gameObject.transform.parent.gameObject, 2);
-            }
-
-    }
-
-
-    }
-
-    private void ConfirmSpawn()
-    {
-        _hasSpawned = true;
+        if (collision.transform.tag == "Ground")
+            Destroy(gameObject.transform.parent.gameObject, 2);
     }
 
 }

@@ -45,6 +45,7 @@ public class _playerAttack : MonoBehaviour
             _attackTime += Time.deltaTime;
             _isAttacking = true;
             _animator.SetBool("IsPunching", true);
+            Debug.Log("Test");
         }
         //If mouse button is released, reset attack time and reset bool
         else if (Input.GetKeyUp(KeyCode.Mouse0))
@@ -59,6 +60,8 @@ public class _playerAttack : MonoBehaviour
             _animator.SetBool("IsPunching", false);
         }
 
+        //if(_isAttacking)
+        //    print(_isAttacking);
     }
 
     private GameObject FindChildGameObjectByName(GameObject topParentGameObject, string gameObjectName)
