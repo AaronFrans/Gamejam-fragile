@@ -101,6 +101,7 @@ public class _playerMovement : MonoBehaviour
         {
             Quaternion desiredRotation = Quaternion.LookRotation(movementInput, Vector3.up);
             transform.rotation = Quaternion.Slerp(transform.rotation, desiredRotation, _rotationSpeed * Time.deltaTime);
+            //transform.rotation = desiredRotation;   
             _animator.SetBool("IsRunning", true);
 
         }
