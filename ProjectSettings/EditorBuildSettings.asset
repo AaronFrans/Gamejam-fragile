@@ -9,9 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/StartMenu.unity
     guid: 9305e6794d8045b409ef37400117cdb2
   - enabled: 1
+    path: Assets/Scenes/MainLevel.unity
+    guid: 36bc07dde4cbfbc499ce17b160fcfe18
+  - enabled: 1
     path: Assets/Scenes/ShopScene.unity
     guid: 293857bbeef834c46879948a37404f08
-  - enabled: 1
-    path: Assets/Scenes/Blockout.unity
-    guid: 700ae0c717ff3eb4a90468d14bbdb5a7
   m_configObjects: {}

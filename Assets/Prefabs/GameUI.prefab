@@ -330,7 +330,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _text: {fileID: 3793923522186063410}
   _finalUpgradePrice: 100000
-  currency: 0
+
 --- !u!1 &6084781746781933637
 GameObject:
   m_ObjectHideFlags: 0
