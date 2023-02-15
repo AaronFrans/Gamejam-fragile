@@ -45,27 +45,13 @@ public class BreakableObject : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        // if (Input.GetMouseButtonDown(0))
-        // {
-        //     Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        //     RaycastHit hasHit;
-        //     if (_collider.Raycast(ray, out hasHit, 100))
-        //     {
-        //
-        //         Debug.Log(_health);
-        //         _health -= 1;
-        //         if (_health <= 0)
-        //         {
-        //             Destroy(_self);
-        //         }
-        //     }
-        // }
-
   
         _isPlayerAttacking = _playerLogicObject.GetComponent<_playerAttack>()._isAttacking;
 
         if (_isPlayerAttacking && _playerWithinRange)
+            --_health;
+
+        if(_health <= 0) //<= in case of 1 health with double damage (2)
             Destroy(_self);
     }  
     
