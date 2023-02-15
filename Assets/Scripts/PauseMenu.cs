@@ -2,14 +2,18 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
 
-    private bool _isGamePaused = false;
+    static public bool _isGamePaused = false;
 
     [SerializeField]
     private GameObject _pauseMenuUI = null;
+
+    [SerializeField]
+    private GameObject _soundMenu = null;
 
     // Start is called before the first frame update
     void Start()
@@ -18,6 +22,7 @@ public class PauseMenu : MonoBehaviour
             Debug.Log("no _pauseMenuUI set");
 
         _pauseMenuUI.SetActive(false);
+        _soundMenu.SetActive(false);
     }
 
     // Update is called once per frame
@@ -37,6 +42,7 @@ public class PauseMenu : MonoBehaviour
         _pauseMenuUI.SetActive(true);
         Time.timeScale = 0;
         _isGamePaused = true;
+
     }
 
     public void ResumeGame()
@@ -44,5 +50,25 @@ public class PauseMenu : MonoBehaviour
         _pauseMenuUI.SetActive(false);
         Time.timeScale = 1;
         _isGamePaused = false;
+
+        _soundMenu.SetActive(false);
+    }
+
+    public void OpenSoundSettings()
+    {
+        _pauseMenuUI.SetActive(false);
+        
+        _soundMenu.SetActive(true);
+    }
+
+    public void CloseSoundSettings() 
+    {
+        _pauseMenuUI.SetActive(true);
+        _soundMenu.SetActive(false);
+    }
+
+    public void GoToMainMenu()
+    {
+        SceneManager.LoadScene("StartMenu");
     }
 }

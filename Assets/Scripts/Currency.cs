@@ -23,7 +23,7 @@ public class Currency : MonoBehaviour
     [SerializeField]
     private int _finalUpgradePrice;
 
-    static public int TotalCurrency { get; set; } = 100000;
+    static public int TotalCurrency { get; set; } = 0;
      
     public enum CurrencyType
     {

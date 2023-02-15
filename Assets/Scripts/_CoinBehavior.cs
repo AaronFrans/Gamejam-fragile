@@ -45,19 +45,16 @@ public class _CoinBehavior : MonoBehaviour
 
     public void UpdateColor()
     {
-        switch (_currentType)
+      switch (_currentType)
         {
             case Currency.CurrencyType.copper:
-                _selfRender.material.color = new Color(1, 0, 0);
-                
+                _selfRender.material.color = new Color(171f / 255f, 116f / 255f, 64f / 255f);
                 break;
             case Currency.CurrencyType.silver:
-                _selfRender.material.color = new Color(0, 1, 0);
-                
+                _selfRender.material.color = new Color(192 / 255f, 192 / 255f, 192 / 255f);
                 break;
             case Currency.CurrencyType.gold:
-                _selfRender.material.color = new Color(0, 0, 1);
-               
+                _selfRender.material.color = new Color(255 / 255f, 215 / 255f, 0 / 255f);
                 break;
 
         }

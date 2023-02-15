@@ -12,9 +12,6 @@ public class BreakableObject : MonoBehaviour
     [SerializeField]
     private BoxCollider _collider = null;
 
-    // max amount of health
-    [SerializeField]
-    private float _health = 0;
 
     [SerializeField]
     private GameObject _cubeGroup = null;
@@ -62,23 +59,24 @@ public class BreakableObject : MonoBehaviour
         Random random = new Random();
 
         _rarity = (Currency.CurrencyType)values.GetValue(random.Next(values.Length));
-        SetColorFromRarity();
+        SetPotFromRarity();
     }
 
-    private void SetColorFromRarity()
+    private void SetPotFromRarity()
     {
         switch (_rarity)
         {
             case Currency.CurrencyType.copper:
-                _selfRender.material.color = new Color(1, 0, 0);
+                _selfRender.material.color = new Color(171f/255f, 116f/255f, 64f/255f);
                 _value = 100;
                 break;
             case Currency.CurrencyType.silver:
-                _selfRender.material.color = new Color(0, 1, 0);
+                _selfRender.material.color = new Color(192 / 255f, 192 / 255f, 192 / 255f);
                 _value = 500;
+
                 break;
             case Currency.CurrencyType.gold:
-                _selfRender.material.color = new Color(0, 0, 1);
+                _selfRender.material.color = new Color(255 / 255f, 215/ 255f, 0 / 255f);
                 _value = 1000;
                 break;
 
@@ -91,11 +89,8 @@ public class BreakableObject : MonoBehaviour
   
         _isPlayerAttacking = _playerLogicObject.GetComponent<_playerAttack>()._isAttacking;
 
-        if (_isPlayerAttacking && _playerWithinRange)
-            --_health;
 
-
-        if(_health <= 0) //<= in case of 1 health with double damage (2)
+        if(_isPlayerAttacking && CanPlayerBreakPot() && _playerWithinRange) //<= in case of 1 health with double damage (2)
         {
             if(!_hasInstantiated)
             {
@@ -108,6 +103,22 @@ public class BreakableObject : MonoBehaviour
             Destroy(gameObject, _breakAudio.clip.length);
         }
     }  
+
+    bool CanPlayerBreakPot()
+    {
+        switch (_rarity)
+        {
+            case Currency.CurrencyType.copper:
+                return true;
+            case Currency.CurrencyType.silver:
+                return _playerAttack._playerAttackPower >= 1;
+            case Currency.CurrencyType.gold:
+                return _playerAttack._playerAttackPower == 2;
+            default:
+                return false;
+                
+        }   
+    }
 
     void DetermineCoins()
     {

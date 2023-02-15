@@ -18,7 +18,7 @@ public class ShopMenu : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI currency;
 
-    private static int _maxSpeedLVL = 3;
+    private static int _maxSpeedLVL = 2;
     private static int _currentSpeedLVL = 0;
 
     // Start is called before the first frame update
@@ -38,6 +38,7 @@ public class ShopMenu : MonoBehaviour
     {
         Currency.TotalCurrency -= shopMenuItem.cost;
         _currentStrenghtLVL++;
+        _playerAttack._playerAttackPower++;
         if (_maxStrenghtLVL > _currentStrenghtLVL)
         {
 

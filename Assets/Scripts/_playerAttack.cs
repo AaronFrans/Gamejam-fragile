@@ -20,6 +20,7 @@ public class _playerAttack : MonoBehaviour
 
     public bool _IsPunching = false;
     //public bool _IsRunning = false;
+    static public int _playerAttackPower;
 
 
     // Start is called before the first frame update
@@ -33,6 +34,9 @@ public class _playerAttack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (PauseMenu._isGamePaused)
+            return;
+
         BreakObject();
 
     }

@@ -20,10 +20,10 @@ public class _MixerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _masterFloat = .25f;
-        _backgroundFloat = .75f;
-        _ambientFloat = .75f;
-        _soundEffectFloat = .75f;
+        _masterFloat = 1f;
+        _backgroundFloat = 1f;
+        _ambientFloat = 1f;
+        _soundEffectFloat = 1f;
 
         _masterSlider.value = _masterFloat;
         _backgroundSlider.value = _backgroundFloat;

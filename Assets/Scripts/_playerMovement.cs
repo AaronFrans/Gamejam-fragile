@@ -80,6 +80,11 @@ public class _playerMovement : MonoBehaviour
 
     void Movement()
     {
+
+        if (PauseMenu._isGamePaused)
+            return;
+
+
         _isOnGround = _controller.isGrounded;
         if (_isOnGround && _playerVelocity.y < 0)
         {
