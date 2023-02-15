@@ -44,7 +44,5 @@ public class _playerAttack : MonoBehaviour
             _isAttacking = false;
         }
 
-        //if(_isAttacking)
-        //    print(_isAttacking);
     }
 }

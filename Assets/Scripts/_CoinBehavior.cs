@@ -59,7 +59,7 @@ public class _CoinBehavior : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.transform.tag == "Ground")
+        if (collision.transform.tag != "Coin")
             Destroy(gameObject.transform.parent.gameObject, 2);
     }
 

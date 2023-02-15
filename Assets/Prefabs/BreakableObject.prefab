@@ -218,7 +218,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _collider: {fileID: 4875226642483306068}
   _health: 1
-  _self: {fileID: 4041479725718188103}
+  _cubeGroup: {fileID: 4041479725718188103}
   _name: PlayerBody
   _coinPrefab: {fileID: 454909567832435188, guid: 7227a66dc2639114ab425412a8c05763, type: 3}
   _selfRender: {fileID: 7849686738043122908}
