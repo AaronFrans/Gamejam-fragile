@@ -31,7 +31,7 @@ public class Currency : MonoBehaviour
         gold
     }
 
-    private int _currency = 0;
+    public int currency = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -67,17 +67,17 @@ public class Currency : MonoBehaviour
         {
             case CurrencyType.copper:
                 {
-                    _currency = Math.Min(_currency + _copperValue, _finalUpgradePrice);
+                    currency = Math.Min(currency + _copperValue, _finalUpgradePrice);
                 }
                 break;
             case CurrencyType.silver:
                 {
-                    _currency = Math.Min(_currency + _silverValue, _finalUpgradePrice);
+                    currency = Math.Min(currency + _silverValue, _finalUpgradePrice);
                 }
                 break;
             case CurrencyType.gold:
                 {
-                    _currency = Math.Min(_currency + _goldValue, _finalUpgradePrice);
+                    currency = Math.Min(currency + _goldValue, _finalUpgradePrice);
                 }
                 break;
         }
@@ -87,6 +87,6 @@ public class Currency : MonoBehaviour
 
     private void UpdateText()
     {
-        _text.text = _currency.ToString();
+        _text.text = currency.ToString();
     }
 }
