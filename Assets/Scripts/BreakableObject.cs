@@ -19,11 +19,6 @@ public class BreakableObject : MonoBehaviour
     [SerializeField]
     private GameObject _self = null;
 
-
-   [SerializeField]
-   private AudioClip _breakAudio;
-
-
     [SerializeField] private string _name;
     [SerializeField] private GameObject _coinPrefab;
 
@@ -34,9 +29,11 @@ public class BreakableObject : MonoBehaviour
     private int _value;
     private bool _isPlayerAttacking;
     private bool _playerWithinRange;
+    private bool _hasInstantiated;
     private GameObject _player;
     private GameObject _playerLogicObject;
     private List<Currency.CurrencyType> _coins = new List<Currency.CurrencyType>();
+    private AudioSource _breakAudio;
 
     private Currency.CurrencyType _rarity;
 
@@ -50,10 +47,11 @@ public class BreakableObject : MonoBehaviour
         if (_self == null)
             Debug.Log("no _self set");
 
-
+        _hasInstantiated = false;
         _player = GameObject.Find("Player");
         _playerLogicObject = FindChildGameObjectByName(_player, _name);
         SetMaterial();
+        _breakAudio = gameObject.GetComponentInChildren<AudioSource>();
     }
 
     private void SetMaterial()
@@ -97,10 +95,14 @@ public class BreakableObject : MonoBehaviour
         if(_health <= 0) //<= in case of 1 health with double damage (2)
         {
             DetermineCoins();
-            InstantiateCoins();
-            
-            AudioSource.PlayClipAtPoint(_breakAudio, transform.position);
-            Destroy(_self);
+            if(!_hasInstantiated)
+            {
+                InstantiateCoins();
+                _breakAudio.Play();
+                Destroy(_self);
+                _hasInstantiated = true;
+            }
+            Destroy(gameObject, _breakAudio.clip.length);
         }
     }  
 
