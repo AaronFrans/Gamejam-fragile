@@ -8,15 +8,14 @@ public class _CoinBehavior : MonoBehaviour
 
     [SerializeField] public float _scaleLimitMin;
     [SerializeField] public float _scaleLimitMax;
+    [SerializeField] private Patch _coinPatch;
 
     public Currency.CurrencyType _currentType;
 
+    private AudioSource _coinSource;
     private MeshRenderer _selfRender;
-    private float _xSpread;
-    private float _ySpread;
-    private float _zSpread;
+    private bool _hasPlayed;
     public int _frustrumSize;
-    Vector3 _TotalSpread;
 
     Rigidbody _Rigidbody;
 
@@ -25,9 +24,10 @@ public class _CoinBehavior : MonoBehaviour
     {
         _currentType = (Currency.CurrencyType)Random.Range(0, 3);
 
-
+        _coinSource = GetComponent<AudioSource>();
         _Rigidbody = GetComponent<Rigidbody>();
         _selfRender = GetComponent<MeshRenderer>();
+        _hasPlayed = false;
 
         float scaleLimit = Random.Range(_scaleLimitMin, _scaleLimitMax);
         Vector3 direction = Random.insideUnitCircle;
@@ -60,9 +60,19 @@ public class _CoinBehavior : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
 
-        if (collision.transform.tag != "Coin")
 
-            Destroy(gameObject.transform.parent.gameObject, 2);
+        if (collision.transform.tag != "Coin")
+        {
+            if (!_hasPlayed)
+            {
+                _coinPatch.Play(_coinSource);
+                _hasPlayed = true;
+                Destroy(gameObject.transform.parent.gameObject, 2);
+            }
+
+        }
+
+
     }
 
 }
