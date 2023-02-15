@@ -139,7 +139,6 @@ MonoBehaviour:
   _mouseSensitivity: 3
   _target: {fileID: 4616732222107935986}
   _distanceFromTarget: 3
-  _smoothTime: 0.2
   _rotationXMinMax: {x: -40, y: 40}
 --- !u!1 &3009494833065405390
 GameObject:
@@ -268,6 +267,7 @@ GameObject:
   - component: {fileID: 3163512650854020266}
   - component: {fileID: 7616005916307792373}
   - component: {fileID: 276908633692839131}
+  - component: {fileID: 7816642500617818327}
   m_Layer: 7
   m_Name: Body
   m_TagString: Untagged
@@ -340,6 +340,29 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!136 &7816642500617818327
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5022385042499620097}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5776590557606550250
 GameObject:
   m_ObjectHideFlags: 0
@@ -444,10 +467,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 710338e08c058d340aef2155a6998b1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _movementSpeed: 6
   _jumpforce: 5
   _rotationSpeed: 5
   _followCamera: {fileID: 8321186397376360439}
+  _isGrappling: 0
+  _isAttacking: 0
 --- !u!114 &8247523283901834376
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -461,6 +485,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxAttackTime: 1
+  _isAttacking: 0
 --- !u!65 &3601947970466050976
 BoxCollider:
   m_ObjectHideFlags: 0
