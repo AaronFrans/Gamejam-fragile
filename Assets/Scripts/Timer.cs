@@ -12,6 +12,9 @@ public class Timer : MonoBehaviour
     private TextMeshProUGUI _text = null;
 
     [SerializeField]
+    private Currency _currency = null;
+
+    [SerializeField]
     private float _secondsUntilEnd = 0;
 
     private bool _hasStarted = false;
@@ -21,6 +24,8 @@ public class Timer : MonoBehaviour
     {
         if (_text == null)
             Debug.Log("no _text set");
+        if (_currency == null)
+            Debug.Log("no _currency set");
 
         UpdateText();
     }
@@ -38,7 +43,10 @@ public class Timer : MonoBehaviour
         {
             _secondsUntilEnd -= Time.deltaTime;
             if (_secondsUntilEnd < 0)
+            {
+                Currency.TotalCurrency += _currency.currency;
                 SceneManager.LoadScene("ShopScene");
+            }
             UpdateText();
         }
     }
