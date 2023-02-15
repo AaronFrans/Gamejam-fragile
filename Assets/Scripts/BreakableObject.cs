@@ -25,6 +25,7 @@ public class BreakableObject : MonoBehaviour
 
     [SerializeField] private string _name;
     [SerializeField] private GameObject _player;
+    [SerializeField] private GameObject _coinPrefab;
 
     [SerializeField] 
     private Renderer _selfRender;
@@ -91,6 +92,7 @@ public class BreakableObject : MonoBehaviour
         if(_health <= 0) //<= in case of 1 health with double damage (2)
         {
             AudioSource.PlayClipAtPoint(_breakAudio, transform.position);
+            Instantiate(_coinPrefab, transform.position, Quaternion.identity);
             Destroy(_self);
         }
     }  

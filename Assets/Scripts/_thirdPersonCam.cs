@@ -20,9 +20,6 @@ public class ThirdPersonCamera: MonoBehaviour
     private Vector3 _smoothVelocity = Vector3.zero;
 
     [SerializeField]
-    private float _smoothTime = 0.2f;
-
-    [SerializeField]
     private Vector2 _rotationXMinMax = new Vector2(-40, 40);
 
     void Update()
