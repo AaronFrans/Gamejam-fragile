@@ -74,7 +74,6 @@ public class _playerMovement : MonoBehaviour
         else
         {
             SlopeSliding();
-            print(SlopeSliding().ToString());
         }
     }
 

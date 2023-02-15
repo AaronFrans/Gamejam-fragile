@@ -91,9 +91,8 @@ public class BreakableObject : MonoBehaviour
 
 
         if(_isPlayerAttacking && CanPlayerBreakPot() && _playerWithinRange) //<= in case of 1 health with double damage (2)
-
-        if(_health <= 0) //<= in case of 1 health with double damage (2)
-        {
+        { 
+    
             if(!_hasInstantiated)
             {
                 Destroy(_cubeGroup);
