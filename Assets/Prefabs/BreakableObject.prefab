@@ -188,7 +188,8 @@ MonoBehaviour:
   _self: {fileID: 5519153485555759128}
   _breakAudio: {fileID: 8300000, guid: cef5ffdf477a3824ba58f797171eb4b0, type: 3}
   _name: PlayerBody
-  _player: {fileID: 0}
+  _player: {fileID: 3009494833065405390, guid: 42f9e6f8518012e498540bf512e4e567, type: 3}
+  _coinPrefab: {fileID: 454909567832435188, guid: 7227a66dc2639114ab425412a8c05763, type: 3}
   _selfRender: {fileID: 7849686738043122908}
 --- !u!65 &5066053891130926594
 BoxCollider:
@@ -210,4 +211,4 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 0.5, z: 0}

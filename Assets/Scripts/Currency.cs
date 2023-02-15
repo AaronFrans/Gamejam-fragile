@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices.WindowsRuntime;
 using TMPro;
 using UnityEngine;
 
@@ -11,13 +12,13 @@ public class Currency : MonoBehaviour
     private TextMeshProUGUI _text = null;
 
     [SerializeField]
-    private int _copperValue;
+    static public int _copperValue = 30;
 
     [SerializeField]
-    private int _silverValue;
+    static public int _silverValue = 50;
 
     [SerializeField]
-    private int _goldValue;
+    static public int _goldValue = 100;
 
     [SerializeField]
     private int _finalUpgradePrice;
@@ -31,7 +32,7 @@ public class Currency : MonoBehaviour
         gold
     }
 
-    private int _currency = 0;
+    public int currency = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -67,17 +68,17 @@ public class Currency : MonoBehaviour
         {
             case CurrencyType.copper:
                 {
-                    _currency = Math.Min(_currency + _copperValue, _finalUpgradePrice);
+                    currency = Math.Min(currency + _copperValue, _finalUpgradePrice);
                 }
                 break;
             case CurrencyType.silver:
                 {
-                    _currency = Math.Min(_currency + _silverValue, _finalUpgradePrice);
+                    currency = Math.Min(currency + _silverValue, _finalUpgradePrice);
                 }
                 break;
             case CurrencyType.gold:
                 {
-                    _currency = Math.Min(_currency + _goldValue, _finalUpgradePrice);
+                    currency = Math.Min(currency + _goldValue, _finalUpgradePrice);
                 }
                 break;
         }
@@ -87,6 +88,23 @@ public class Currency : MonoBehaviour
 
     private void UpdateText()
     {
-        _text.text = _currency.ToString();
+        _text.text = currency.ToString();
+    }
+
+    static public int DetermineValue(CurrencyType type)
+    {
+        switch (type)
+        {
+            case CurrencyType.copper:
+                return _copperValue;
+                
+            case CurrencyType.silver:
+                return _silverValue;
+
+            case CurrencyType.gold:
+                return _goldValue;
+        }
+
+        return _copperValue;
     }
 }
