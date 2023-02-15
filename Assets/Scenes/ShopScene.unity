@@ -180,8 +180,7 @@ PrefabInstance:
       value: ShopMenu
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects:
-    - {fileID: 7022326580219947788, guid: f477feda15a46b3428389d8d991b2415, type: 3}
+    m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f477feda15a46b3428389d8d991b2415, type: 3}
