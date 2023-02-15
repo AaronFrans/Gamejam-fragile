@@ -261,7 +261,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -279,8 +279,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: daee616ae8fd8664dab8bf37cd85caca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _desiredDirection: {x: 0, y: 0, z: 0}
-  _velocity: 0
+  _scaleLimitMin: 100
+  _scaleLimitMax: 250
+  _selfRender: {fileID: 7178401735582477508}
   _currentType: 0
   _frustrumSize: 0
 --- !u!54 &1017416069781257001
@@ -308,5 +309,5 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 112
+  m_Constraints: 0
   m_CollisionDetection: 0

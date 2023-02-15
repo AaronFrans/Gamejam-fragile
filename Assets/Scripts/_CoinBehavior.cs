@@ -6,15 +6,18 @@ using UnityEngine;
 public class _CoinBehavior : MonoBehaviour
 {
 
-    [SerializeField] public Vector3 _desiredDirection;
-    [SerializeField] public float _velocity;
+    [SerializeField] public float _scaleLimitMin;
+    [SerializeField] public float _scaleLimitMax;
+
     public Currency.CurrencyType _currentType;
 
+    private MeshRenderer _selfRender;
     private float _xSpread;
     private float _ySpread;
     private float _zSpread;
     public int _frustrumSize;
     Vector3 _TotalSpread;
+    private float _gravity = -9.81f;
 
     Rigidbody _Rigidbody;
 
@@ -22,40 +25,43 @@ public class _CoinBehavior : MonoBehaviour
     void Start()
     {
         _currentType = (Currency.CurrencyType)Random.Range(0, 3);
-        // print(_currentType.ToString());
-        _xSpread = Random.Range(-1f, 1f);
-        _ySpread = Random.Range(0.5f, 1f);
-        _zSpread = Random.Range(-1f, 1f);
+
 
         _Rigidbody = GetComponent<Rigidbody>();
-    }   
+        _selfRender = GetComponent<MeshRenderer>();
 
-    // Update is called once per frame
-    void Update()
-    {
+        float scaleLimit = Random.Range(_scaleLimitMin, _scaleLimitMax);
+        Vector3 direction = Random.insideUnitCircle;
+        direction.z = direction.y; // circle is at Z units 
+        direction.y = 1; // circle is at Z units 
 
-        _TotalSpread = new Vector3(_xSpread, _ySpread, _zSpread).normalized * _frustrumSize;
-        
-        //transform.rotation = Quaternion.Euler(_TotalSpread) * transform.rotation;
-        _Rigidbody.AddForce(_TotalSpread);
-
-        //_animTime += Time.deltaTime;
-        //
-        //_animTime = _animTime % 5;
-        //
-        //transform.position = MathParabola.Parabola(Vector3.zero, Vector3.forward * 10f, 5f, _animTime / 5f);
-
-
-
+        _Rigidbody.AddForce(direction * scaleLimit);
+        UpdateColor();
     }
 
-    private void OnTriggerEnter(Collider other)
+    public void UpdateColor()
     {
-        if (other.tag == "Player")
+        switch (_currentType)
         {
-            //Add value to total
-            
-           // Destroy(gameObject);
+            case Currency.CurrencyType.copper:
+                _selfRender.material.color = new Color(1, 0, 0);
+                
+                break;
+            case Currency.CurrencyType.silver:
+                _selfRender.material.color = new Color(0, 1, 0);
+                
+                break;
+            case Currency.CurrencyType.gold:
+                _selfRender.material.color = new Color(0, 0, 1);
+               
+                break;
+
         }
     }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.transform.tag == "Ground")
+            Destroy(gameObject, 2);
+    }
+
 }

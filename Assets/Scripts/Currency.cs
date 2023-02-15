@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices.WindowsRuntime;
 using TMPro;
 using UnityEngine;
 
@@ -11,13 +12,13 @@ public class Currency : MonoBehaviour
     private TextMeshProUGUI _text = null;
 
     [SerializeField]
-    private int _copperValue;
+    static public int _copperValue = 30;
 
     [SerializeField]
-    private int _silverValue;
+    static public int _silverValue = 50;
 
     [SerializeField]
-    private int _goldValue;
+    static public int _goldValue = 100;
 
     [SerializeField]
     private int _finalUpgradePrice;
@@ -88,5 +89,22 @@ public class Currency : MonoBehaviour
     private void UpdateText()
     {
         _text.text = currency.ToString();
+    }
+
+    static public int DetermineValue(CurrencyType type)
+    {
+        switch (type)
+        {
+            case CurrencyType.copper:
+                return _copperValue;
+                
+            case CurrencyType.silver:
+                return _silverValue;
+
+            case CurrencyType.gold:
+                return _goldValue;
+        }
+
+        return _copperValue;
     }
 }
