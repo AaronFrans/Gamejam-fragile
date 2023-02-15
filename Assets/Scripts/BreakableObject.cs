@@ -89,7 +89,10 @@ public class BreakableObject : MonoBehaviour
             --_health;
 
         if(_health <= 0) //<= in case of 1 health with double damage (2)
+        {
+            AudioSource.PlayClipAtPoint(_breakAudio, transform.position);
             Destroy(_self);
+        }
     }  
     
 
