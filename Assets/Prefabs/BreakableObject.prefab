@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7849686738043122908}
   m_Layer: 0
   m_Name: Cube
-  m_TagString: Untagged
+  m_TagString: Coin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 3993249080005577966}
   m_Layer: 0
   m_Name: CubeGroup
-  m_TagString: Untagged
+  m_TagString: Coin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -128,7 +128,7 @@ GameObject:
   - component: {fileID: 4875226642483306068}
   m_Layer: 0
   m_Name: CubeCollider
-  m_TagString: Untagged
+  m_TagString: Coin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -182,7 +182,7 @@ GameObject:
   - component: {fileID: 5066053891130926594}
   m_Layer: 0
   m_Name: BreakableObject
-  m_TagString: Untagged
+  m_TagString: Coin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -255,7 +255,7 @@ GameObject:
   - component: {fileID: 2098801123923560044}
   m_Layer: 0
   m_Name: Audio Source
-  m_TagString: Untagged
+  m_TagString: Coin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -287,7 +287,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 3964281020930342846, guid: 5f412628ea1a9b643b8ef1ea020f4552, type: 2}
   m_audioClip: {fileID: 8300000, guid: cef5ffdf477a3824ba58f797171eb4b0, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.4
   m_Pitch: 1
   Loop: 0
   Mute: 0

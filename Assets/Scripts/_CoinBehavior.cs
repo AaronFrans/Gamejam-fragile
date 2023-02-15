@@ -15,6 +15,8 @@ public class _CoinBehavior : MonoBehaviour
     private AudioSource _coinSource;
     private MeshRenderer _selfRender;
     private bool _hasPlayed;
+    private bool _hasSpawned;
+    private string CONFIRM_SPAWN;
     public int _frustrumSize;
 
     Rigidbody _Rigidbody;
@@ -27,10 +29,13 @@ public class _CoinBehavior : MonoBehaviour
         _coinSource = GetComponent<AudioSource>();
         _Rigidbody = GetComponent<Rigidbody>();
         _selfRender = GetComponent<MeshRenderer>();
-        _hasPlayed = false;
+        _hasSpawned= false;
+        CONFIRM_SPAWN = "ConfirmSpawn";
+        Invoke(CONFIRM_SPAWN,0.5f);
 
         float scaleLimit = Random.Range(_scaleLimitMin, _scaleLimitMax);
         Vector3 direction = Random.insideUnitCircle;
+        
         direction.z = direction.y; // circle is at Z units 
         direction.y = 1; // circle is at Z units 
 
@@ -60,8 +65,7 @@ public class _CoinBehavior : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
 
-
-        if (collision.transform.tag != "Coin")
+        if (collision.transform.tag != "Coin" && _hasSpawned)
         {
             if (!_hasPlayed)
             {
@@ -70,9 +74,14 @@ public class _CoinBehavior : MonoBehaviour
                 Destroy(gameObject.transform.parent.gameObject, 2);
             }
 
-        }
+    }
 
 
+    }
+
+    private void ConfirmSpawn()
+    {
+        _hasSpawned = true;
     }
 
 }
