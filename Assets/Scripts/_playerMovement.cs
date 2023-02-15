@@ -41,6 +41,10 @@ public class _playerMovement : MonoBehaviour
     static public bool _hasUnlockedSpeedBoost = false;
     static public bool _hasUnlockedExtraDamage = false;
     static public bool _hasUnlockedExtraCoinValue = false;
+
+
+    public bool _isGrappling;
+    public bool _isAttacking;
     
 
     private void Start()
@@ -68,7 +72,6 @@ public class _playerMovement : MonoBehaviour
 
         //Get input
         float horizontal = Input.GetAxisRaw("Horizontal");
-     
         float vertical = Input.GetAxisRaw("Vertical");
 
         Vector3 movementInput = Quaternion.Euler(0, _followCamera.transform.eulerAngles.y ,0) * new Vector3(horizontal, 0f, vertical).normalized;
