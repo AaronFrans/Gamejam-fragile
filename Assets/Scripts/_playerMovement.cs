@@ -12,7 +12,7 @@ using UnityEngine.UIElements;
 
 public class _playerMovement : MonoBehaviour
 {
-
+    Animator _animator;
     CharacterController _controller;
 
     [SerializeField]
@@ -34,6 +34,7 @@ public class _playerMovement : MonoBehaviour
     bool _isOnGround = true;
     float _gravityValue = -9.81f;
 
+
     int _amountJumped;
     static public bool _hasUnlockedDoubleJump = false;
 
@@ -47,9 +48,13 @@ public class _playerMovement : MonoBehaviour
     public bool _isAttacking;
     
 
+    public bool _IsRunning = false;
+
+
     private void Start()
     {
         _controller = GetComponent<CharacterController>();
+        _animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -78,12 +83,16 @@ public class _playerMovement : MonoBehaviour
 
         _controller.Move(movementInput * _movementSpeed * Time.deltaTime);
 
-        if(movementInput != Vector3.zero)
+        if (movementInput != Vector3.zero)
         {
             Quaternion desiredRotation = Quaternion.LookRotation(movementInput, Vector3.up);
             transform.rotation = Quaternion.Slerp(transform.rotation, desiredRotation, _rotationSpeed * Time.deltaTime);
+            _animator.SetBool("IsRunning",true);
+
         }
 
+        else
+            _animator.SetBool("IsRunning",false);
         
         if(Input.GetButtonDown("Jump") && _amountJumped < 2 && _hasUnlockedDoubleJump)
         {
