@@ -97,12 +97,12 @@ public class BreakableObject : MonoBehaviour
 
         if(_health <= 0) //<= in case of 1 health with double damage (2)
         {
-            DetermineCoins();
             if(!_hasInstantiated)
             {
+                Destroy(_cubeGroup);
+                DetermineCoins();
                 InstantiateCoins();
                 _breakAudio.Play();
-                Destroy(_cubeGroup);
                 _hasInstantiated = true;
             }
             Destroy(gameObject, _breakAudio.clip.length);
