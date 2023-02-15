@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7849686738043122908}
   m_Layer: 0
   m_Name: Cube
-  m_TagString: Untagged
+  m_TagString: Coin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1907827793487916633}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.5057166, y: 4.969577, z: 25.730993}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -40,7 +40,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1907827793487916633}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: -8517725900640002782, guid: ec3082ecd370e694eaf1494a372c4dab, type: 3}
 --- !u!23 &7849686738043122908
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 3993249080005577966}
   m_Layer: 0
   m_Name: CubeGroup
-  m_TagString: Untagged
+  m_TagString: Coin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -107,7 +107,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4041479725718188103}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.5057166, y: -4.469577, z: -25.730993}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -126,9 +126,10 @@ GameObject:
   m_Component:
   - component: {fileID: 6436242460057404731}
   - component: {fileID: 4875226642483306068}
+  - component: {fileID: 4852784544335943387}
   m_Layer: 0
   m_Name: CubeCollider
-  m_TagString: Untagged
+  m_TagString: Coin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -141,7 +142,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4966102343174421110}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.5057166, y: 4.969577, z: 25.730993}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -169,6 +170,28 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!64 &4852784544335943387
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4966102343174421110}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -8517725900640002782, guid: ec3082ecd370e694eaf1494a372c4dab, type: 3}
 --- !u!1 &5519153485555759128
 GameObject:
   m_ObjectHideFlags: 0
@@ -180,9 +203,10 @@ GameObject:
   - component: {fileID: 2044177162344452908}
   - component: {fileID: 362128977}
   - component: {fileID: 5066053891130926594}
+  - component: {fileID: 2299026342497993242}
   m_Layer: 0
   m_Name: BreakableObject
-  m_TagString: Untagged
+  m_TagString: Coin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -196,8 +220,8 @@ Transform:
   m_GameObject: {fileID: 5519153485555759128}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 3993249080005577966}
   - {fileID: 789794819278414891}
@@ -218,7 +242,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _collider: {fileID: 4875226642483306068}
   _health: 1
-  _self: {fileID: 4041479725718188103}
+  _cubeGroup: {fileID: 4041479725718188103}
   _name: PlayerBody
   _coinPrefab: {fileID: 454909567832435188, guid: 7227a66dc2639114ab425412a8c05763, type: 3}
   _selfRender: {fileID: 7849686738043122908}
@@ -243,6 +267,28 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0.5, z: 0}
+--- !u!64 &2299026342497993242
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5519153485555759128}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -8517725900640002782, guid: ec3082ecd370e694eaf1494a372c4dab, type: 3}
 --- !u!1 &5547939410854443554
 GameObject:
   m_ObjectHideFlags: 0
@@ -255,7 +301,7 @@ GameObject:
   - component: {fileID: 2098801123923560044}
   m_Layer: 0
   m_Name: Audio Source
-  m_TagString: Untagged
+  m_TagString: Coin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -287,7 +333,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 3964281020930342846, guid: 5f412628ea1a9b643b8ef1ea020f4552, type: 2}
   m_audioClip: {fileID: 8300000, guid: cef5ffdf477a3824ba58f797171eb4b0, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.4
   m_Pitch: 1
   Loop: 0
   Mute: 0

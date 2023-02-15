@@ -20,6 +20,7 @@ public class _playerAttack : MonoBehaviour
 
     public bool _IsPunching = false;
     //public bool _IsRunning = false;
+    static public int _playerAttackPower;
 
 
     // Start is called before the first frame update
@@ -33,6 +34,9 @@ public class _playerAttack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (PauseMenu._isGamePaused)
+            return;
+
         BreakObject();
 
     }
@@ -45,7 +49,6 @@ public class _playerAttack : MonoBehaviour
             _attackTime += Time.deltaTime;
             _isAttacking = true;
             _animator.SetBool("IsPunching", true);
-            Debug.Log("Test");
         }
         //If mouse button is released, reset attack time and reset bool
         else if (Input.GetKeyUp(KeyCode.Mouse0))
@@ -60,8 +63,6 @@ public class _playerAttack : MonoBehaviour
             _animator.SetBool("IsPunching", false);
         }
 
-        //if(_isAttacking)
-        //    print(_isAttacking);
     }
 
     private GameObject FindChildGameObjectByName(GameObject topParentGameObject, string gameObjectName)

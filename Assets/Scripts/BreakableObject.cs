@@ -12,12 +12,9 @@ public class BreakableObject : MonoBehaviour
     [SerializeField]
     private BoxCollider _collider = null;
 
-    // max amount of health
-    [SerializeField]
-    private float _health = 0;
 
     [SerializeField]
-    private GameObject _self = null;
+    private GameObject _cubeGroup = null;
 
     [SerializeField] private string _name;
     [SerializeField] private GameObject _coinPrefab;
@@ -32,6 +29,7 @@ public class BreakableObject : MonoBehaviour
     private bool _hasInstantiated;
     private GameObject _player;
     private GameObject _playerLogicObject;
+    private GameObject _currencyText;
     private List<Currency.CurrencyType> _coins = new List<Currency.CurrencyType>();
     private AudioSource _breakAudio;
 
@@ -44,11 +42,12 @@ public class BreakableObject : MonoBehaviour
         if (_collider == null)
             Debug.Log("no _collider set");
 
-        if (_self == null)
+        if (_cubeGroup == null)
             Debug.Log("no _self set");
 
         _hasInstantiated = false;
         _player = GameObject.Find("Player");
+        _currencyText = GameObject.Find("CurrencyText");
         _playerLogicObject = FindChildGameObjectByName(_player, _name);
         SetMaterial();
         _breakAudio = gameObject.GetComponentInChildren<AudioSource>();
@@ -60,23 +59,24 @@ public class BreakableObject : MonoBehaviour
         Random random = new Random();
 
         _rarity = (Currency.CurrencyType)values.GetValue(random.Next(values.Length));
-        SetColorFromRarity();
+        SetPotFromRarity();
     }
 
-    private void SetColorFromRarity()
+    private void SetPotFromRarity()
     {
         switch (_rarity)
         {
             case Currency.CurrencyType.copper:
-                _selfRender.material.color = new Color(1, 0, 0);
+                _selfRender.material.color = new Color(171f/255f, 116f/255f, 64f/255f);
                 _value = 100;
                 break;
             case Currency.CurrencyType.silver:
-                _selfRender.material.color = new Color(0, 1, 0);
+                _selfRender.material.color = new Color(192 / 255f, 192 / 255f, 192 / 255f);
                 _value = 500;
+
                 break;
             case Currency.CurrencyType.gold:
-                _selfRender.material.color = new Color(0, 0, 1);
+                _selfRender.material.color = new Color(255 / 255f, 215/ 255f, 0 / 255f);
                 _value = 1000;
                 break;
 
@@ -89,22 +89,38 @@ public class BreakableObject : MonoBehaviour
   
         _isPlayerAttacking = _playerLogicObject.GetComponent<_playerAttack>()._isAttacking;
 
-        if (_isPlayerAttacking && _playerWithinRange)
-            --_health;
+
+        if(_isPlayerAttacking && CanPlayerBreakPot() && _playerWithinRange) //<= in case of 1 health with double damage (2)
 
         if(_health <= 0) //<= in case of 1 health with double damage (2)
         {
-            DetermineCoins();
             if(!_hasInstantiated)
             {
+                Destroy(_cubeGroup);
+                DetermineCoins();
                 InstantiateCoins();
                 _breakAudio.Play();
-                Destroy(_self);
                 _hasInstantiated = true;
             }
             Destroy(gameObject, _breakAudio.clip.length);
         }
     }  
+
+    bool CanPlayerBreakPot()
+    {
+        switch (_rarity)
+        {
+            case Currency.CurrencyType.copper:
+                return true;
+            case Currency.CurrencyType.silver:
+                return _playerAttack._playerAttackPower >= 1;
+            case Currency.CurrencyType.gold:
+                return _playerAttack._playerAttackPower == 2;
+            default:
+                return false;
+                
+        }   
+    }
 
     void DetermineCoins()
     {
@@ -127,10 +143,12 @@ public class BreakableObject : MonoBehaviour
 
             }
 
-               var coinRarity = values[random.Next(values.Count)];
-               _coins.Add(coinRarity);
-               _value -= Currency.DetermineValue(coinRarity);
-            
+            var coinRarity = values[random.Next(values.Count)];
+            _coins.Add(coinRarity);
+            _value -= Currency.DetermineValue(coinRarity);
+            var currency =  _currencyText.GetComponent<Currency>();
+
+            _currencyText.GetComponent<Currency>().AddToCurrecny(coinRarity);
         }
 
     }
@@ -143,7 +161,6 @@ public class BreakableObject : MonoBehaviour
  
             _CoinBehavior coinBehavior = instantiatedCoin.GetComponentInChildren<_CoinBehavior>();
             coinBehavior._currentType = currentCoin;
-            //coinBehavior.UpdateColor();
         }
     }
 

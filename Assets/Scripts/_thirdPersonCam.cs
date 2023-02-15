@@ -24,6 +24,11 @@ public class ThirdPersonCamera: MonoBehaviour
 
     void Update()
     {
+
+        if (PauseMenu._isGamePaused)
+            return;
+
+
         float mouseX = Input.GetAxis("Mouse X") * _mouseSensitivity;
         float mouseY = Input.GetAxis("Mouse Y") * -_mouseSensitivity;
 

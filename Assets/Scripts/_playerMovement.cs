@@ -80,6 +80,11 @@ public class _playerMovement : MonoBehaviour
 
     void Movement()
     {
+
+        if (PauseMenu._isGamePaused)
+            return;
+
+
         _isOnGround = _controller.isGrounded;
         if (_isOnGround && _playerVelocity.y < 0)
         {
@@ -101,6 +106,7 @@ public class _playerMovement : MonoBehaviour
         {
             Quaternion desiredRotation = Quaternion.LookRotation(movementInput, Vector3.up);
             transform.rotation = Quaternion.Slerp(transform.rotation, desiredRotation, _rotationSpeed * Time.deltaTime);
+            //transform.rotation = desiredRotation;   
             _animator.SetBool("IsRunning", true);
 
         }
@@ -114,6 +120,7 @@ public class _playerMovement : MonoBehaviour
         {
             _playerVelocity.y += Mathf.Sqrt(_jumpforce * -3.0f * _gravityValue);
             ++_amountJumped;
+            _animator.SetBool("IsJumping", true);
         }
         else if (Input.GetButtonDown("Jump") && _amountJumped < 1)
         {

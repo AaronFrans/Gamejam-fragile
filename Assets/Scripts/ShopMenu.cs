@@ -2,19 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class ShopMenu : MonoBehaviour
 {
 
-    [SerializeField]
     private static int _StrenghtPriceIncrease = 2000;
 
     private static int _maxStrenghtLVL = 3;
     private static int _currentStrenghtLVL = 0;
 
-    [SerializeField]
     private static int _SpeedPriceIncrease = 2200;
+
+    [SerializeField]
+    private TextMeshProUGUI currency;
 
     private static int _maxSpeedLVL = 3;
     private static int _currentSpeedLVL = 0;
@@ -22,6 +24,13 @@ public class ShopMenu : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        currency.text = Currency.TotalCurrency.ToString();
+    }
+
+
+    private void Update()
+    {
+        currency.text = Currency.TotalCurrency.ToString();
     }
 
 
@@ -29,6 +38,7 @@ public class ShopMenu : MonoBehaviour
     {
         Currency.TotalCurrency -= shopMenuItem.cost;
         _currentStrenghtLVL++;
+        _playerAttack._playerAttackPower++;
         if (_maxStrenghtLVL > _currentStrenghtLVL)
         {
 
@@ -56,7 +66,7 @@ public class ShopMenu : MonoBehaviour
         }
         else
         {
-            shopMenuItem.cost = -1;
+            shopMenuItem.cost = int.MaxValue;
             shopMenuItem.SetSoldOut();
             PlayerPrefs.SetInt(shopMenuItem.prefName, shopMenuItem.cost);
         }
@@ -95,7 +105,7 @@ public class ShopMenu : MonoBehaviour
         }
         else
         {
-            shopMenuItem.cost = -1;
+            shopMenuItem.cost = int.MaxValue;
             shopMenuItem.SetSoldOut();
             PlayerPrefs.SetInt(shopMenuItem.prefName, shopMenuItem.cost);
         }
@@ -105,23 +115,27 @@ public class ShopMenu : MonoBehaviour
     public void BuyDoubleValue(ShopMenuItem shopMenuItem)
     {
         Currency.TotalCurrency -= shopMenuItem.cost;
-        shopMenuItem.cost = -1;
+        shopMenuItem.cost = int.MaxValue;
         shopMenuItem.SetSoldOut();
         PlayerPrefs.SetInt(shopMenuItem.prefName, shopMenuItem.cost);
+        Currency._copperValue *= 2;
+        Currency._silverValue *= 2;
+        Currency._goldValue *= 2;
     }
 
     public void BuyDoubleJump(ShopMenuItem shopMenuItem)
     {
         Currency.TotalCurrency -= shopMenuItem.cost;
-        shopMenuItem.cost = -1;
+        shopMenuItem.cost = int.MaxValue ;
         shopMenuItem.SetSoldOut();
         PlayerPrefs.SetInt(shopMenuItem.prefName, shopMenuItem.cost);
+        _playerMovement._hasUnlockedDoubleJump = true;
     }
 
     public void BuyGrapplingGun(ShopMenuItem shopMenuItem)
     {
         Currency.TotalCurrency -= shopMenuItem.cost;
-        shopMenuItem.cost = -1;
+        shopMenuItem.cost = int.MaxValue;
         shopMenuItem.SetSoldOut();
         PlayerPrefs.SetInt(shopMenuItem.prefName, shopMenuItem.cost);
     }
@@ -129,9 +143,14 @@ public class ShopMenu : MonoBehaviour
     public void BuyWinGame(ShopMenuItem shopMenuItem)
     {
         Currency.TotalCurrency -= shopMenuItem.cost;
-        shopMenuItem.cost = -1;
+        shopMenuItem.cost = int.MaxValue;
         shopMenuItem.SetSoldOut();
         PlayerPrefs.SetInt(shopMenuItem.prefName, shopMenuItem.cost);
         // go to final scene
+    }
+
+    public void StartGame()
+    {
+        SceneManager.LoadScene("MainLevel");
     }
 }
