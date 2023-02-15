@@ -114,6 +114,7 @@ public class _playerMovement : MonoBehaviour
         {
             _playerVelocity.y += Mathf.Sqrt(_jumpforce * -3.0f * _gravityValue);
             ++_amountJumped;
+            _animator.SetBool("IsJumping", true);
         }
         else if (Input.GetButtonDown("Jump") && _amountJumped < 1)
         {

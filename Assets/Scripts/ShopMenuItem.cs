@@ -21,7 +21,7 @@ public class ShopMenuItem : MonoBehaviour
 
     [SerializeField]
     public int cost;
-    
+
     [SerializeField]
     public string prefName;
 
@@ -44,12 +44,10 @@ public class ShopMenuItem : MonoBehaviour
 
     void Update()
     {
-        if (Currency.TotalCurrency < cost)
+        if (cost == int.MaxValue)
+            SetSoldOut();
+        else if (Currency.TotalCurrency < cost)
             button.interactable = false;
-        else if (cost == -1)
-        {
-            button.interactable = false;
-        }
         else
             button.interactable = true;
     }
@@ -60,17 +58,15 @@ public class ShopMenuItem : MonoBehaviour
 
         upgradeText.text = PlayerPrefs.GetString(prefName + "Text", upgradeText.text);
 
-        if (Currency.TotalCurrency < cost)
+        if (cost == int.MaxValue)
+            SetSoldOut();
+        else if (Currency.TotalCurrency < cost)
             button.interactable = false;
-        else if(cost == -1)
-        {
-            button.interactable = false;
-        }
         else
             button.interactable = true;
     }
 
-   public  void SetSoldOut()
+    public void SetSoldOut()
     {
         buttonText.text = "Sold Out!";
         button.interactable = false;
