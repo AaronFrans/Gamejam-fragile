@@ -26,6 +26,9 @@ public class BreakableObject : MonoBehaviour
     [SerializeField] private string _name;
     [SerializeField] private GameObject _player;
 
+    [SerializeField] 
+    private Renderer _selfRender;
+
     
     bool _isPlayerAttacking;
     bool _playerWithinRange;
@@ -44,39 +47,36 @@ public class BreakableObject : MonoBehaviour
         if (_self == null)
             Debug.Log("no _self set");
 
-        SetMaterial();
 
         _playerLogicObject = FindChildGameObjectByName(_player, _name);
+
+        SetMaterial();
     }
 
     private void SetMaterial()
     {
         Array values = Enum.GetValues(typeof(Currency.CurrencyType));
         Random random = new Random();
-        _rarity = (Currency.CurrencyType)values.GetValue(random.Next(values.Length));
-        Material newMat = GetMaterialFromRarity();
 
-        var _selfRender = _self.GetComponent<Renderer>();
-        _selfRender.material = newMat;
+        _rarity = (Currency.CurrencyType)values.GetValue(random.Next(values.Length));
+        SetColorFromRarity();
     }
 
-    private Material GetMaterialFromRarity()
+    private void SetColorFromRarity()
     {
-        Material newMat = null;
         switch (_rarity)
         {
             case Currency.CurrencyType.copper:
-                newMat = Resources.Load("m_Copper", typeof(Material)) as Material;
+                _selfRender.material.color = new Color(1, 0, 0);
                 break;
             case Currency.CurrencyType.silver:
-                newMat = Resources.Load("m_Silver", typeof(Material)) as Material;
+                _selfRender.material.color = new Color(0, 1, 0);
                 break;
             case Currency.CurrencyType.gold:
-                newMat = Resources.Load("m_Gold", typeof(Material)) as Material;
+                _selfRender.material.color = new Color(0, 0, 1);
                 break;
 
         }
-        return newMat;
     }
 
     // Update is called once per frame
