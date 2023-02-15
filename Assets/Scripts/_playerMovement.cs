@@ -68,10 +68,14 @@ public class _playerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         if (!SlopeSliding())
             Movement();
         else
+        {
             SlopeSliding();
+            print(SlopeSliding().ToString());
+        }
     }
 
     void Movement()
@@ -139,10 +143,11 @@ public class _playerMovement : MonoBehaviour
     bool SlopeSliding()
     {
         if(_isOnGround)
-        {
+        { 
+           
             var sphereCastVerticalOffset = _controller.height / 2 - _controller.radius;
             var castOrigin = transform.position - new Vector3(0, sphereCastVerticalOffset, 0);
-            
+            Debug.DrawLine(new Vector3(castOrigin.z, _controller.radius - 0.01f, castOrigin.z), castOrigin, Color.red, 3f);
 
 
 
@@ -168,6 +173,7 @@ public class _playerMovement : MonoBehaviour
                     var yInverse = 1f - normal.y;
                     _playerVelocity.x += yInverse * normal.x;
                     _playerVelocity.z += yInverse * normal.z;
+                    _playerVelocity.y = -5f;
 
 
                     _controller.Move(_playerVelocity * Time.deltaTime);
