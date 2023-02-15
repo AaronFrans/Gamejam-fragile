@@ -85,9 +85,11 @@ public class _playerMovement : MonoBehaviour
 
         //Get input
         float horizontal = Input.GetAxisRaw("Horizontal");
+
+
         float vertical = Input.GetAxisRaw("Vertical");
 
-        Vector3 movementInput = Quaternion.Euler(0, _followCamera.transform.eulerAngles.y ,0) * new Vector3(horizontal, 0f, vertical).normalized;
+        Vector3 movementInput = Quaternion.Euler(0, _followCamera.transform.eulerAngles.y, 0) * new Vector3(horizontal, 0f, vertical).normalized;
 
         _controller.Move(movementInput * _movementSpeed * Time.deltaTime);
 
@@ -95,22 +97,30 @@ public class _playerMovement : MonoBehaviour
         {
             Quaternion desiredRotation = Quaternion.LookRotation(movementInput, Vector3.up);
             transform.rotation = Quaternion.Slerp(transform.rotation, desiredRotation, _rotationSpeed * Time.deltaTime);
-            _animator.SetBool("IsRunning",true);
+            _animator.SetBool("IsRunning", true);
 
         }
 
         else
-            _animator.SetBool("IsRunning",false);
+        {
+            _animator.SetBool("IsRunning", false);
+        }
 
         if (Input.GetButtonDown("Jump") && _amountJumped < 2 && _hasUnlockedDoubleJump)
         {
             _playerVelocity.y += Mathf.Sqrt(_jumpforce * -3.0f * _gravityValue);
             ++_amountJumped;
         }
-        else if(Input.GetButtonDown("Jump") && _amountJumped < 1)
+        else if (Input.GetButtonDown("Jump") && _amountJumped < 1)
         {
             _playerVelocity.y += Mathf.Sqrt(_jumpforce * -3.0f * _gravityValue);
             ++_amountJumped;
+            _animator.SetBool("IsJumping", true);
+        }
+
+        else 
+        { 
+            _animator.SetBool("IsJumping", false);
         }
 
         _playerVelocity.y += (_gravityValue * 3f) * Time.deltaTime;
