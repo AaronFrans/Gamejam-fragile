@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5691507004368508179}
   m_Layer: 0
   m_Name: Coin
-  m_TagString: Untagged
+  m_TagString: Coin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -115,6 +115,7 @@ PrefabInstance:
       addedObject: {fileID: 6574658285515557518}
   m_SourcePrefab: {fileID: 100100000, guid: dfc0e52c6f526fa4ab5071f7819e24af, type: 3}
 --- !u!4 &3813308163752580462 stripped
+
 Transform:
   m_CorrespondingSourceObject: {fileID: 6847852251224076956, guid: dfc0e52c6f526fa4ab5071f7819e24af, type: 3}
   m_PrefabInstance: {fileID: 7774306719571650546}

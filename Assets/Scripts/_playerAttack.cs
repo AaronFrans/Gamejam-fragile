@@ -59,8 +59,6 @@ public class _playerAttack : MonoBehaviour
             _animator.SetBool("IsPunching", false);
         }
 
-        //if(_isAttacking)
-        //    print(_isAttacking);
     }
 
     private GameObject FindChildGameObjectByName(GameObject topParentGameObject, string gameObjectName)
