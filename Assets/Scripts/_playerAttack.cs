@@ -28,7 +28,7 @@ public class _playerAttack : MonoBehaviour
     {
 
         //If left click do break logic
-        if (Input.GetKey(KeyCode.Mouse0) && _attackTime < _maxAttackTime)
+        if (Input.GetKeyDown(KeyCode.Mouse0) && _attackTime < _maxAttackTime)
         {
             _attackTime += Time.deltaTime;
             _isAttacking = true;
