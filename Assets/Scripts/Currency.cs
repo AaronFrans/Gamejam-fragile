@@ -45,20 +45,7 @@ public class Currency : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
-        {
-            AddToCurrecny(CurrencyType.copper);
-        }
-
-        if (Input.GetMouseButtonDown(1))
-        {
-            AddToCurrecny(CurrencyType.silver);
-        }
-
-        if (Input.GetMouseButtonDown(2))
-        {
-            AddToCurrecny(CurrencyType.gold);
-        }
+       
     }
 
 

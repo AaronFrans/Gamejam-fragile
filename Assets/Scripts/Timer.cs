@@ -4,11 +4,15 @@ using System.Collections.Generic;
 using TMPro;
 using TMPro.EditorUtilities;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Timer : MonoBehaviour
 {
     [SerializeField]
     private TextMeshProUGUI _text = null;
+
+    [SerializeField]
+    private Currency _currency = null;
 
     [SerializeField]
     private float _secondsUntilEnd = 0;
@@ -20,6 +24,8 @@ public class Timer : MonoBehaviour
     {
         if (_text == null)
             Debug.Log("no _text set");
+        if (_currency == null)
+            Debug.Log("no _currency set");
 
         UpdateText();
     }
@@ -36,6 +42,11 @@ public class Timer : MonoBehaviour
         if (_hasStarted)
         {
             _secondsUntilEnd -= Time.deltaTime;
+            if (_secondsUntilEnd < 0)
+            {
+                Currency.TotalCurrency += _currency.currency;
+                SceneManager.LoadScene("ShopScene");
+            }
             UpdateText();
         }
     }

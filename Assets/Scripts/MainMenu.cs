@@ -12,7 +12,7 @@ public class MainMenu : MonoBehaviour
     {
 
         PlayerPrefs.DeleteAll();
-        SceneManager.LoadScene("ShopScene");
+        SceneManager.LoadScene("MainLevel");
     }
 
 }
