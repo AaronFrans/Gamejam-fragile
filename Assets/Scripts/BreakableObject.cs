@@ -17,8 +17,8 @@ public class BreakableObject : MonoBehaviour
     private GameObject _self = null;
 
 
-    [SerializeField]
-    private AudioClip _breakAudio;
+   [SerializeField]
+   private AudioClip _breakAudio;
 
 
     [SerializeField] private string _name;
@@ -83,19 +83,6 @@ public class BreakableObject : MonoBehaviour
             if (temp != null)
                 return temp;
 
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hasHit;
-            if (_collider.Raycast(ray, out hasHit, 100))
-            {
-
-                Debug.Log(_health);
-                _health -= 1;
-                if (_health <= 0)
-                {
-                    AudioSource.PlayClipAtPoint(_breakAudio, transform.position); 
-                    Destroy(_self);
-                }
-            }
         }
 
 
