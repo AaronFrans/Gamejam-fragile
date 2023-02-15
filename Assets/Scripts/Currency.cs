@@ -7,7 +7,6 @@ using UnityEngine;
 public class Currency : MonoBehaviour
 {
 
-
     [SerializeField]
     private TextMeshProUGUI _text = null;
 
@@ -23,6 +22,8 @@ public class Currency : MonoBehaviour
     [SerializeField]
     private int _finalUpgradePrice;
 
+    static public int TotalCurrency { get; set; } = 100000;
+     
     public enum CurrencyType
     {
         copper,
