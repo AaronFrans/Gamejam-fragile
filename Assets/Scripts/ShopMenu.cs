@@ -109,4 +109,29 @@ public class ShopMenu : MonoBehaviour
         shopMenuItem.SetSoldOut();
         PlayerPrefs.SetInt(shopMenuItem.prefName, shopMenuItem.cost);
     }
+
+    public void BuyDoubleJump(ShopMenuItem shopMenuItem)
+    {
+        Currency.TotalCurrency -= shopMenuItem.cost;
+        shopMenuItem.cost = -1;
+        shopMenuItem.SetSoldOut();
+        PlayerPrefs.SetInt(shopMenuItem.prefName, shopMenuItem.cost);
+    }
+
+    public void BuyGrapplingGun(ShopMenuItem shopMenuItem)
+    {
+        Currency.TotalCurrency -= shopMenuItem.cost;
+        shopMenuItem.cost = -1;
+        shopMenuItem.SetSoldOut();
+        PlayerPrefs.SetInt(shopMenuItem.prefName, shopMenuItem.cost);
+    }
+
+    public void BuyWinGame(ShopMenuItem shopMenuItem)
+    {
+        Currency.TotalCurrency -= shopMenuItem.cost;
+        shopMenuItem.cost = -1;
+        shopMenuItem.SetSoldOut();
+        PlayerPrefs.SetInt(shopMenuItem.prefName, shopMenuItem.cost);
+        // go to final scene
+    }
 }

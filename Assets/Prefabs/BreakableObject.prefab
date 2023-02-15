@@ -189,6 +189,7 @@ MonoBehaviour:
   _breakAudio: {fileID: 8300000, guid: cef5ffdf477a3824ba58f797171eb4b0, type: 3}
   _name: PlayerBody
   _player: {fileID: 0}
+  _selfRender: {fileID: 7849686738043122908}
 --- !u!65 &5066053891130926594
 BoxCollider:
   m_ObjectHideFlags: 0
