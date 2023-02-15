@@ -1062,6 +1062,38 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 28.573792
       objectReference: {fileID: 0}
+    - target: {fileID: 6206013103323054821, guid: fb10ac93b0bde0e4b970dbffd4af0323, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6206013103323054821, guid: fb10ac93b0bde0e4b970dbffd4af0323, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6206013103323054821, guid: fb10ac93b0bde0e4b970dbffd4af0323, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1609681800780188023}
+    - target: {fileID: 6206013103323054821, guid: fb10ac93b0bde0e4b970dbffd4af0323, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6206013103323054821, guid: fb10ac93b0bde0e4b970dbffd4af0323, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: BuyDoubleJump
+      objectReference: {fileID: 0}
+    - target: {fileID: 6206013103323054821, guid: fb10ac93b0bde0e4b970dbffd4af0323, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: ShopMenu, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6206013103323054821, guid: fb10ac93b0bde0e4b970dbffd4af0323, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 4545251087967557704}
+    - target: {fileID: 6206013103323054821, guid: fb10ac93b0bde0e4b970dbffd4af0323, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: ShopMenuItem, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 6562108415031317343, guid: fb10ac93b0bde0e4b970dbffd4af0323, type: 3}
       propertyPath: m_Name
       value: Double Jump
@@ -1096,6 +1128,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4545251087967557704 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 568729427819030105, guid: fb10ac93b0bde0e4b970dbffd4af0323, type: 3}
+  m_PrefabInstance: {fileID: 4104874581254569489}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6756086a540ba44e8115838e80dbae6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &7986924651857640692 stripped
@@ -1249,6 +1292,38 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 28.573792
       objectReference: {fileID: 0}
+    - target: {fileID: 6206013103323054821, guid: fb10ac93b0bde0e4b970dbffd4af0323, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6206013103323054821, guid: fb10ac93b0bde0e4b970dbffd4af0323, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6206013103323054821, guid: fb10ac93b0bde0e4b970dbffd4af0323, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1609681800780188023}
+    - target: {fileID: 6206013103323054821, guid: fb10ac93b0bde0e4b970dbffd4af0323, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6206013103323054821, guid: fb10ac93b0bde0e4b970dbffd4af0323, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: BuyWinGame
+      objectReference: {fileID: 0}
+    - target: {fileID: 6206013103323054821, guid: fb10ac93b0bde0e4b970dbffd4af0323, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: ShopMenu, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6206013103323054821, guid: fb10ac93b0bde0e4b970dbffd4af0323, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 7349403462559138329}
+    - target: {fileID: 6206013103323054821, guid: fb10ac93b0bde0e4b970dbffd4af0323, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: ShopMenuItem, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 6562108415031317343, guid: fb10ac93b0bde0e4b970dbffd4af0323, type: 3}
       propertyPath: m_Name
       value: Win Game
@@ -1278,6 +1353,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7349403462559138329 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 568729427819030105, guid: fb10ac93b0bde0e4b970dbffd4af0323, type: 3}
+  m_PrefabInstance: {fileID: 7069204337790805056}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6756086a540ba44e8115838e80dbae6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!4 &8272209267065253662 stripped
@@ -1436,6 +1522,38 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 28.573792
       objectReference: {fileID: 0}
+    - target: {fileID: 6206013103323054821, guid: fb10ac93b0bde0e4b970dbffd4af0323, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6206013103323054821, guid: fb10ac93b0bde0e4b970dbffd4af0323, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6206013103323054821, guid: fb10ac93b0bde0e4b970dbffd4af0323, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1609681800780188023}
+    - target: {fileID: 6206013103323054821, guid: fb10ac93b0bde0e4b970dbffd4af0323, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6206013103323054821, guid: fb10ac93b0bde0e4b970dbffd4af0323, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: BuyGrapplingGun
+      objectReference: {fileID: 0}
+    - target: {fileID: 6206013103323054821, guid: fb10ac93b0bde0e4b970dbffd4af0323, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: ShopMenu, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6206013103323054821, guid: fb10ac93b0bde0e4b970dbffd4af0323, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 7202557352658426414}
+    - target: {fileID: 6206013103323054821, guid: fb10ac93b0bde0e4b970dbffd4af0323, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: ShopMenuItem, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 6562108415031317343, guid: fb10ac93b0bde0e4b970dbffd4af0323, type: 3}
       propertyPath: m_Name
       value: Grapling Hook
@@ -1465,6 +1583,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7202557352658426414 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 568729427819030105, guid: fb10ac93b0bde0e4b970dbffd4af0323, type: 3}
+  m_PrefabInstance: {fileID: 7210289008941972599}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6756086a540ba44e8115838e80dbae6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!4 &8414420387845519145 stripped
