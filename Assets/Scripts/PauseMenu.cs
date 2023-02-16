@@ -43,19 +43,19 @@ public class PauseMenu : MonoBehaviour
 
     private void PauseGame()
     {
+        Cursor.lockState = CursorLockMode.Confined;
         _pauseMenuUI.SetActive(true);
         _GameGUI.SetActive(false);
         Time.timeScale = 0;
         _isGamePaused = true;
-        Cursor.lockState = CursorLockMode.Confined;
     }
 
     public void ResumeGame()
     {
+        Cursor.lockState = CursorLockMode.Locked;
         _pauseMenuUI.SetActive(false);
         Time.timeScale = 1;
         _isGamePaused = false;
-        Cursor.lockState = CursorLockMode.Locked;
         _GameGUI.SetActive(true);
         _soundMenu.SetActive(false);
     }
@@ -75,6 +75,8 @@ public class PauseMenu : MonoBehaviour
 
     public void GoToMainMenu()
     {
+        Time.timeScale = 1;
+        _isGamePaused = false;
         SceneManager.LoadScene("StartMenu");
     }
 }
