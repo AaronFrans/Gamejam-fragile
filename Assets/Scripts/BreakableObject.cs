@@ -50,7 +50,7 @@ public class BreakableObject : MonoBehaviour
             Debug.Log("no _collider set");
 
         if (_cubeGroup == null)
-            Debug.Log("no _self set");
+            Debug.Log("no _cubeGroup set");
 
         _hasInstantiated = false;
         _player = GameObject.Find("Player");
