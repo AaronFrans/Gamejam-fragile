@@ -20,7 +20,7 @@ public class _playerMovement : MonoBehaviour
     
 
     [SerializeField]
-    public float _jumpforce = 5.0f;
+    static public float _jumpforce = 3.0f;
   
     [SerializeField]
     public float _rotationSpeed = 5.0f;

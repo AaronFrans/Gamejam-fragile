@@ -1477,7 +1477,7 @@ PrefabInstance:
       objectReference: {fileID: 3616434136557698706}
     - target: {fileID: 568729427819030105, guid: fb10ac93b0bde0e4b970dbffd4af0323, type: 3}
       propertyPath: prefName
-      value: Grapling Hook
+      value: JumpHeight
       objectReference: {fileID: 0}
     - target: {fileID: 568729427819030105, guid: fb10ac93b0bde0e4b970dbffd4af0323, type: 3}
       propertyPath: buttonText
@@ -1625,7 +1625,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6206013103323054821, guid: fb10ac93b0bde0e4b970dbffd4af0323, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: BuyGrapplingGun
+      value: BuyJumpHeight
       objectReference: {fileID: 0}
     - target: {fileID: 6206013103323054821, guid: fb10ac93b0bde0e4b970dbffd4af0323, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
@@ -1641,7 +1641,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6562108415031317343, guid: fb10ac93b0bde0e4b970dbffd4af0323, type: 3}
       propertyPath: m_Name
-      value: Grapling Hook
+      value: JumpHeight
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

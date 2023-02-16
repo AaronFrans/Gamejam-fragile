@@ -134,9 +134,9 @@ public class ShopMenu : MonoBehaviour
         shopMenuItem.cost = int.MaxValue;
         shopMenuItem.SetSoldOut();
         PlayerPrefs.SetInt(shopMenuItem.prefName, shopMenuItem.cost);
-        Currency._copperValue *= 2;
-        Currency._silverValue *= 2;
-        Currency._goldValue *= 2;
+        BreakableObject._copperValue *= 2;
+        BreakableObject._silverValue *= 2;
+        BreakableObject._goldValue *= 2;
     }
 
     public void BuyDoubleJump(ShopMenuItem shopMenuItem)
@@ -148,12 +148,13 @@ public class ShopMenu : MonoBehaviour
         _playerMovement._hasUnlockedDoubleJump = true;
     }
 
-    public void BuyGrapplingGun(ShopMenuItem shopMenuItem)
+    public void BuyJumpHeight(ShopMenuItem shopMenuItem)
     {
         Currency.TotalCurrency -= shopMenuItem.cost;
         shopMenuItem.cost = int.MaxValue;
         shopMenuItem.SetSoldOut();
         PlayerPrefs.SetInt(shopMenuItem.prefName, shopMenuItem.cost);
+        _playerMovement._jumpforce += 2f;
     }
 
     public void BuyWinGame(ShopMenuItem shopMenuItem)

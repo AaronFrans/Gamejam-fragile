@@ -36,6 +36,10 @@ public class BreakableObject : MonoBehaviour
 
     private Currency.CurrencyType _rarity;
 
+    static public int _copperValue = 100;
+    static public int _silverValue = 500;
+    static public int _goldValue = 1000;
+
 
     // Start is called before the first frame update
     void Start()
@@ -49,7 +53,8 @@ public class BreakableObject : MonoBehaviour
         _hasInstantiated = false;
         _player = GameObject.Find("Player");
         _currencyText = GameObject.Find("CurrencyText");
-        _playerLogicObject = FindChildGameObjectByName(_player, _name);
+        if(_player != null)
+            _playerLogicObject = FindChildGameObjectByName(_player, _name);
         SetMaterial();
         _breakAudio = gameObject.GetComponentInChildren<AudioSource>();
     }
@@ -69,16 +74,17 @@ public class BreakableObject : MonoBehaviour
         {
             case Currency.CurrencyType.copper:
                 _selfRender.material.color = new Color(171f/255f, 116f/255f, 64f/255f);
-                _value = 100;
+                _value= _copperValue;
+                
                 break;
             case Currency.CurrencyType.silver:
                 _selfRender.material.color = new Color(192 / 255f, 192 / 255f, 192 / 255f);
-                _value = 500;
+                _value = _silverValue;
 
                 break;
             case Currency.CurrencyType.gold:
                 _selfRender.material.color = new Color(255 / 255f, 215/ 255f, 0 / 255f);
-                _value = 1000;
+                _value = _goldValue;
                 break;
 
         }
@@ -87,7 +93,9 @@ public class BreakableObject : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-  
+        if (_player == null)
+            return;
+
         _isPlayerAttacking = _playerLogicObject.GetComponent<_playerAttack>()._isAttacking;
 
 
