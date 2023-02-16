@@ -19,8 +19,10 @@ public class GoblinAnimEventHandler : MonoBehaviour
         {
             return;
         }
-
-        _footstep.Play(_footSource);
+        if (_playerMovement._isOnGround)
+        {
+            _footstep.Play(_footSource);
+        }
     }
     public void GoblinBeginPunch()
     {

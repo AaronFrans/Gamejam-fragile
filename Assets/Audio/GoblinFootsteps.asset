@@ -24,11 +24,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: c4dd8bb5e9ea30c4d947b83f0296fc61, type: 3}
   - {fileID: 8300000, guid: 6c81af04e68b616429232073eee0d5d3, type: 3}
   - {fileID: 8300000, guid: 2c06a1be3660ab84e8765674a9c43502, type: 3}
-  - {fileID: 8300000, guid: 973144f200084bf44a30134b9dd2246b, type: 3}
   - {fileID: 8300000, guid: 1590123a400e0374a84bd85bfc02c1bb, type: 3}
-  - {fileID: 8300000, guid: a2fa3570cad14664590f47a0d94f61cf, type: 3}
-  - {fileID: 8300000, guid: 528d8b06f4e7c0b44925db2ecacf52bf, type: 3}
-  - {fileID: 8300000, guid: e49ed795396aabb4288d26dd6ff8cb38, type: 3}
   maxVolume: 1
   minVolume: 1
   maxPitch: 1.25

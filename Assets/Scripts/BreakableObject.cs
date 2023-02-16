@@ -19,6 +19,8 @@ public class BreakableObject : MonoBehaviour
     [SerializeField] private string _name;
     [SerializeField] private GameObject _coinPrefab;
     [SerializeField] private _MeshShatter _meshShatter;
+    [SerializeField] private AudioClip _breakClip;
+    [SerializeField] private AudioClip _noBreakClip;
 
     [SerializeField]
     private Renderer _selfRender;
@@ -32,7 +34,7 @@ public class BreakableObject : MonoBehaviour
     private GameObject _playerLogicObject;
     private GameObject _currencyText;
     private List<Currency.CurrencyType> _coins = new List<Currency.CurrencyType>();
-    private AudioSource _breakAudio;
+    private AudioSource _potAudio;
 
     private Currency.CurrencyType _rarity;
 
@@ -48,7 +50,7 @@ public class BreakableObject : MonoBehaviour
             Debug.Log("no _collider set");
 
         if (_cubeGroup == null)
-            Debug.Log("no _self set");
+            Debug.Log("no _cubeGroup set");
 
         _hasInstantiated = false;
         _player = GameObject.Find("Player");
@@ -56,7 +58,7 @@ public class BreakableObject : MonoBehaviour
         if (_player != null)
             _playerLogicObject = FindChildGameObjectByName(_player, _name);
         SetMaterial();
-        _breakAudio = gameObject.GetComponentInChildren<AudioSource>();
+        _potAudio = gameObject.GetComponentInChildren<AudioSource>();
     }
 
     private void SetMaterial()
@@ -103,22 +105,29 @@ public class BreakableObject : MonoBehaviour
         _isPlayerAttacking = _playerLogicObject.GetComponent<_playerAttack>()._isAttacking;
 
 
-
-
-        if (_isPlayerAttacking && CanPlayerBreakPot() && _playerWithinRange) //<= in case of 1 health with double damage (2)
-        {
-
-            if (!_hasInstantiated)
+        if(_isPlayerAttacking && _playerWithinRange) //<= in case of 1 health with double damage (2)
+        { 
+            if(CanPlayerBreakPot())
             {
-                _meshShatter.ShatterMesh(_selfRender.material.color);
-                Destroy(_cubeGroup);
-                DetermineCoins();
-                InstantiateCoins();
-                _breakAudio.Play();
-                Timer._hasStarted = true;
-                _hasInstantiated = true;
+                if(!_hasInstantiated)
+                {
+                    _meshShatter.ShatterMesh(_selfRender.material.color);
+                    Destroy(_cubeGroup);
+                    DetermineCoins();
+                    InstantiateCoins();
+                    _potAudio.clip = _breakClip;
+                    _potAudio.Play();
+                    Timer._hasStarted = true;
+                    _hasInstantiated = true;
+                }
+                Destroy(gameObject, _potAudio.clip.length);
             }
-            Destroy(gameObject, _breakAudio.clip.length);
+            else
+
+            {
+                _potAudio.clip = _noBreakClip;
+                _potAudio.Play();
+            }
         }
     }
 

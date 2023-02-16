@@ -18,6 +18,11 @@ public class PauseMenu : MonoBehaviour
     [SerializeField]
     private GameObject _GameGUI = null;
 
+    [SerializeField]
+    private AudioSource _ambienceSource = null;
+    [SerializeField]
+    private AudioSource _MusicSource = null;
+
 
     // Start is called before the first frame update
     void Start()
@@ -48,6 +53,8 @@ public class PauseMenu : MonoBehaviour
         _GameGUI.SetActive(false);
         Time.timeScale = 0;
         _isGamePaused = true;
+        _ambienceSource.Pause();
+        _MusicSource.Pause();
     }
 
     public void ResumeGame()
@@ -58,6 +65,11 @@ public class PauseMenu : MonoBehaviour
         _isGamePaused = false;
         _GameGUI.SetActive(true);
         _soundMenu.SetActive(false);
+        _ambienceSource.Play();
+        if(Timer._hasStarted)
+        {
+            _MusicSource.Play();
+        }
     }
 
     public void OpenSoundSettings()

@@ -31,7 +31,7 @@ public class _playerMovement : MonoBehaviour
 
     Rigidbody _playerRigidBody;
     Vector3 _playerVelocity;
-    bool _isOnGround = true;
+    public static bool _isOnGround = true;
     float _gravityValue = -9.81f;
 
 
