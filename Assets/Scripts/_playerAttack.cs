@@ -28,7 +28,7 @@ public class _playerAttack : MonoBehaviour
     {
         var temp = FindChildGameObjectByName(_Player, _meshName);
         _animator = temp.GetComponent<Animator>();
-        
+
     }
 
     // Update is called once per frame
@@ -37,7 +37,8 @@ public class _playerAttack : MonoBehaviour
         if (PauseMenu._isGamePaused)
             return;
 
-        BreakObject();
+    
+            BreakObject();
 
     }
     void BreakObject()

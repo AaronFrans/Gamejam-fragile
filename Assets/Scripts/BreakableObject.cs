@@ -22,10 +22,10 @@ public class BreakableObject : MonoBehaviour
     [SerializeField] private AudioClip _breakClip;
     [SerializeField] private AudioClip _noBreakClip;
 
-    [SerializeField] 
+    [SerializeField]
     private Renderer _selfRender;
 
-    
+
     private int _value;
     private bool _isPlayerAttacking;
     private bool _playerWithinRange;
@@ -55,7 +55,7 @@ public class BreakableObject : MonoBehaviour
         _hasInstantiated = false;
         _player = GameObject.Find("Player");
         _currencyText = GameObject.Find("CurrencyText");
-        if(_player != null)
+        if (_player != null)
             _playerLogicObject = FindChildGameObjectByName(_player, _name);
         SetMaterial();
         _potAudio = gameObject.GetComponentInChildren<AudioSource>();
@@ -75,9 +75,9 @@ public class BreakableObject : MonoBehaviour
         switch (_rarity)
         {
             case Currency.CurrencyType.copper:
-                _selfRender.material.color = new Color(171f/255f, 116f/255f, 64f/255f);
-                _value= _copperValue;
-                
+                _selfRender.material.color = new Color(171f / 255f, 116f / 255f, 64f / 255f);
+                _value = _copperValue;
+
                 break;
             case Currency.CurrencyType.silver:
                 _selfRender.material.color = new Color(192 / 255f, 192 / 255f, 192 / 255f);
@@ -85,7 +85,7 @@ public class BreakableObject : MonoBehaviour
 
                 break;
             case Currency.CurrencyType.gold:
-                _selfRender.material.color = new Color(255 / 255f, 215/ 255f, 0 / 255f);
+                _selfRender.material.color = new Color(255 / 255f, 215 / 255f, 0 / 255f);
                 _value = _goldValue;
                 break;
 
@@ -97,6 +97,10 @@ public class BreakableObject : MonoBehaviour
     {
         if (_player == null)
             return;
+
+
+        if (!GoblinAnimEventHandler.canHit)
+           return;
 
         _isPlayerAttacking = _playerLogicObject.GetComponent<_playerAttack>()._isAttacking;
 
@@ -119,12 +123,13 @@ public class BreakableObject : MonoBehaviour
                 Destroy(gameObject, _potAudio.clip.length);
             }
             else
+
             {
                 _potAudio.clip = _noBreakClip;
                 _potAudio.Play();
             }
         }
-    }  
+    }
 
     bool CanPlayerBreakPot()
     {
@@ -138,8 +143,8 @@ public class BreakableObject : MonoBehaviour
                 return _playerAttack._playerAttackPower == 2;
             default:
                 return false;
-                
-        }   
+
+        }
     }
 
     void DetermineCoins()
@@ -150,23 +155,23 @@ public class BreakableObject : MonoBehaviour
         Random random = new Random();
 
 
-        while(_value > Currency._copperValue)
+        while (_value > Currency._copperValue)
         {
-             if(_value < Currency._silverValue)
+            if (_value < Currency._silverValue)
             {
                 values = values.Where(x => x != Currency.CurrencyType.silver).ToList();
 
             }
-            else if(_value < Currency._goldValue)
+            else if (_value < Currency._goldValue)
             {
-                values = values.Where(x => x!= Currency.CurrencyType.gold).ToList();
+                values = values.Where(x => x != Currency.CurrencyType.gold).ToList();
 
             }
 
             var coinRarity = values[random.Next(values.Count)];
             _coins.Add(coinRarity);
             _value -= Currency.DetermineValue(coinRarity);
-            var currency =  _currencyText.GetComponent<Currency>();
+            var currency = _currencyText.GetComponent<Currency>();
 
             _currencyText.GetComponent<Currency>().AddToCurrecny(coinRarity);
         }
@@ -179,7 +184,7 @@ public class BreakableObject : MonoBehaviour
         foreach (var currentCoin in _coins)
         {
             var instantiatedCoin = Instantiate(_coinPrefab, transform.position, Quaternion.identity);
- 
+
             _CoinBehavior coinBehavior = instantiatedCoin.GetComponentInChildren<_CoinBehavior>();
             coinBehavior._currentType = currentCoin;
         }
@@ -188,10 +193,10 @@ public class BreakableObject : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
 
-       if (other.tag == "Player")
-           _playerWithinRange = true;
+        if (other.tag == "Player")
+            _playerWithinRange = true;
     }
-    
+
 
     private void OnTriggerExit(Collider other)
     {
@@ -201,7 +206,7 @@ public class BreakableObject : MonoBehaviour
 
     private GameObject FindChildGameObjectByName(GameObject topParentGameObject, string gameObjectName)
     {
-        for(int i = 0; i < topParentGameObject.transform.childCount; ++i)
+        for (int i = 0; i < topParentGameObject.transform.childCount; ++i)
         {
 
             if (topParentGameObject.transform.GetChild(i).name == gameObjectName)
