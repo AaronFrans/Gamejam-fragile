@@ -10,7 +10,7 @@ public class BreakableObject : MonoBehaviour
 {
     //The collider for interactions
     [SerializeField]
-    private BoxCollider _collider = null;
+    private MeshCollider _collider = null;
 
 
     [SerializeField]
@@ -18,6 +18,7 @@ public class BreakableObject : MonoBehaviour
 
     [SerializeField] private string _name;
     [SerializeField] private GameObject _coinPrefab;
+    [SerializeField] private _MeshShatter _meshShatter;
 
     [SerializeField] 
     private Renderer _selfRender;
@@ -95,6 +96,7 @@ public class BreakableObject : MonoBehaviour
     
             if(!_hasInstantiated)
             {
+                _meshShatter.ShatterMesh(_selfRender.material.color);
                 Destroy(_cubeGroup);
                 DetermineCoins();
                 InstantiateCoins();
@@ -152,7 +154,8 @@ public class BreakableObject : MonoBehaviour
         }
 
     }
-    
+
+
     void InstantiateCoins()
     {
         foreach (var currentCoin in _coins)
