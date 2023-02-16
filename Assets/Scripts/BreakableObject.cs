@@ -53,8 +53,10 @@ public class BreakableObject : MonoBehaviour
         _hasInstantiated = false;
         _player = GameObject.Find("Player");
         _currencyText = GameObject.Find("CurrencyText");
-        if(_player != null)
+        if (_player != null)
             _playerLogicObject = FindChildGameObjectByName(_player, _name);
+        else
+            Debug.Log("Player not found");
         SetMaterial();
         _breakAudio = gameObject.GetComponentInChildren<AudioSource>();
     }
