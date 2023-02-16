@@ -26,7 +26,7 @@ public class Timer : MonoBehaviour
             Debug.Log("no _text set");
         if (_currency == null)
             Debug.Log("no _currency set");
-
+        _hasStarted = false;
         UpdateText();
     }
 
