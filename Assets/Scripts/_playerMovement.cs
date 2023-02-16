@@ -150,12 +150,12 @@ public class _playerMovement : MonoBehaviour
 
                 //Debug angle of surface and the normal of that surface
 
-               Debug.DrawLine(hit.point, hit.point + hit.normal, Color.black, 3f);
-               OnNextDrawGizmos += () =>
-               {
-                   GUI.color = Color.black;
-                   Handles.Label(transform.position + new Vector3(0, 2f, 0), "Angle: " + angle.ToString());
-               };
+               //Debug.DrawLine(hit.point, hit.point + hit.normal, Color.black, 3f);
+               //OnNextDrawGizmos += () =>
+               //{
+               //    GUI.color = Color.black;
+               //    Handles.Label(transform.position + new Vector3(0, 2f, 0), "Angle: " + angle.ToString());
+               //};
 
 
                 if(angle > _controller.slopeLimit)
