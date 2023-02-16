@@ -264,6 +264,8 @@ MonoBehaviour:
   _name: PlayerBody
   _coinPrefab: {fileID: 454909567832435188, guid: 7227a66dc2639114ab425412a8c05763, type: 3}
   _meshShatter: {fileID: 4243494068349341310}
+  _breakClip: {fileID: 8300000, guid: cef5ffdf477a3824ba58f797171eb4b0, type: 3}
+  _noBreakClip: {fileID: 8300000, guid: 3a4619877d6240f44a30d944b5c87fc2, type: 3}
   _selfRender: {fileID: 7849686738043122908}
 --- !u!64 &2299026342497993242
 MeshCollider:

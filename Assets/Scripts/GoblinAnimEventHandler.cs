@@ -10,17 +10,23 @@ public class GoblinAnimEventHandler : MonoBehaviour
     [SerializeField] private AudioSource _footSource;
     [SerializeField] private AudioSource _headSource;
 
+
+    public static bool canHit = false;
+
     public void GoblinFootstep()
     {
         if(_footstep == null)
         {
             return;
         }
-
-        _footstep.Play(_footSource);
+        if (_playerMovement._isOnGround)
+        {
+            _footstep.Play(_footSource);
+        }
     }
     public void GoblinBeginPunch()
     {
+        canHit = true;
         if(_goblinPunch == null)
         {
             return;
@@ -47,5 +53,6 @@ public class GoblinAnimEventHandler : MonoBehaviour
     public void GoblinEndPunch()
     {
 
+        canHit = false;
     }
 }

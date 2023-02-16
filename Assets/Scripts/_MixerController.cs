@@ -12,7 +12,7 @@ public class _MixerController : MonoBehaviour
     //[SerializeField] private AudioMixer _audioMixer;
 
     public Slider _masterSlider, _backgroundSlider, _ambientSlider, _soundEffectSlider;
-    private float _masterFloat, _backgroundFloat, _ambientFloat, _soundEffectFloat;
+
 
     [SerializeField]
     public AudioMixer _mixer;
@@ -20,38 +20,42 @@ public class _MixerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
-        _masterSlider.value = 1f;
-        _backgroundSlider.value = 1f;
-        _ambientSlider.value = 1f;
-        _soundEffectSlider.value = 1f;
-    }
-
-
-    // Update is called once per frame
-    void Update()
-    {
-        _mixer.SetFloat("Master", _masterSlider.value);
-        _mixer.SetFloat("Music", _backgroundSlider.value);
-        _mixer.SetFloat("Ambi", _ambientSlider.value);
-        _mixer.SetFloat("SFX", _soundEffectSlider.value);
+        _mixer.SetFloat("Master", Mathf.Log10(PlayerPrefs.GetFloat("Master", 1)) * 20);
+        _mixer.SetFloat("Music", Mathf.Log10(PlayerPrefs.GetFloat("Music", 1)) * 20);
+        _mixer.SetFloat("Ambi", Mathf.Log10(PlayerPrefs.GetFloat("Ambi", 1)) * 20);
+        _mixer.SetFloat("SFX", Mathf.Log10(PlayerPrefs.GetFloat("SFX", 1)) * 20);
     }
 
     public void UpdateMaster(float newVal)
     {
-        _mixer.SetFloat("Master", newVal);
+        UpdateMixer("Master", newVal);
     }
 
     public void UpdateMusic(float newVal)
     {
-        _mixer.SetFloat("Music", newVal);
+        UpdateMixer("Music", newVal);
     }
+
     public void UpdateAmbi(float newVal)
     {
-        _mixer.SetFloat("Ambi", newVal);
+        UpdateMixer("Ambi", newVal);
     }
     public void UpdateSFX(float newVal)
     {
-        _mixer.SetFloat("SFX", newVal);
+        UpdateMixer("SFX", newVal);
     }
+    private void UpdateMixer(string mixerName ,float newVal)
+    {
+        if (newVal == 0)
+        {
+            _mixer.SetFloat(mixerName, -80);
+        }
+        else
+        {
+            _mixer.SetFloat(mixerName, Mathf.Log10(newVal) * 20);
+        }
+        PlayerPrefs.SetFloat(mixerName, newVal);
+        PlayerPrefs.Save();
+    }
+
 }
