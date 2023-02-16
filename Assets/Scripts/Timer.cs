@@ -17,7 +17,7 @@ public class Timer : MonoBehaviour
     [SerializeField]
     private float _secondsUntilEnd = 0;
 
-    private bool _hasStarted = false;
+    static public bool _hasStarted = false;
 
     // Start is called before the first frame update
     void Start()
@@ -26,18 +26,13 @@ public class Timer : MonoBehaviour
             Debug.Log("no _text set");
         if (_currency == null)
             Debug.Log("no _currency set");
-
+        _hasStarted = false;
         UpdateText();
     }
 
     // Update is called once per frame
     void Update()
     {
-
-        if (Input.GetMouseButtonDown(0))
-        {
-            StartTimer();
-        }
 
         if (_hasStarted)
         {
@@ -56,10 +51,5 @@ public class Timer : MonoBehaviour
 
         TimeSpan time = TimeSpan.FromSeconds(_secondsUntilEnd);
         _text.text = time.ToString("mm\\:ss");
-    }
-
-    public void StartTimer()
-    {
-        _hasStarted = true;
     }
 }
