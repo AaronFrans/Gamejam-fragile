@@ -15,6 +15,10 @@ public class PauseMenu : MonoBehaviour
     [SerializeField]
     private GameObject _soundMenu = null;
 
+    [SerializeField]
+    private GameObject _GameGUI = null;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -39,18 +43,20 @@ public class PauseMenu : MonoBehaviour
 
     private void PauseGame()
     {
+        Cursor.lockState = CursorLockMode.Confined;
         _pauseMenuUI.SetActive(true);
+        _GameGUI.SetActive(false);
         Time.timeScale = 0;
         _isGamePaused = true;
-
     }
 
     public void ResumeGame()
     {
+        Cursor.lockState = CursorLockMode.Locked;
         _pauseMenuUI.SetActive(false);
         Time.timeScale = 1;
         _isGamePaused = false;
-
+        _GameGUI.SetActive(true);
         _soundMenu.SetActive(false);
     }
 
@@ -69,6 +75,8 @@ public class PauseMenu : MonoBehaviour
 
     public void GoToMainMenu()
     {
+        Time.timeScale = 1;
+        _isGamePaused = false;
         SceneManager.LoadScene("StartMenu");
     }
 }

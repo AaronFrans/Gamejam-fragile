@@ -1,13 +1,5 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Runtime.CompilerServices;
-using System.Runtime.InteropServices.WindowsRuntime;
-using TMPro;
-using UnityEditor;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 
 public class _playerMovement : MonoBehaviour
@@ -20,7 +12,7 @@ public class _playerMovement : MonoBehaviour
     
 
     [SerializeField]
-    public float _jumpforce = 5.0f;
+    static public float _jumpforce = 3.0f;
   
     [SerializeField]
     public float _rotationSpeed = 5.0f;
@@ -44,16 +36,8 @@ public class _playerMovement : MonoBehaviour
     int _amountJumped;
     static public bool _hasUnlockedDoubleJump = false;
 
-    static public bool _hasUnlockedGrappleHook = false;
-    static public bool _hasUnlockedSpeedBoost = false;
-    static public bool _hasUnlockedExtraDamage = false;
-    static public bool _hasUnlockedExtraCoinValue = false;
-
-
-    public bool _isGrappling;
     public bool _isAttacking;
     
-
     public bool _IsRunning = false;
     public bool _IsJumping = false;
 

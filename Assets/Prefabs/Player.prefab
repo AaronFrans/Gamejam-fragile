@@ -330,8 +330,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5776590557606550250}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0.000057088, y: -0.013153, z: -0.14319}
+  m_LocalScale: {x: 1.3182, y: 1.3182, z: 1.3182}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3920887960284007645}
@@ -404,12 +404,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 710338e08c058d340aef2155a6998b1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _jumpforce: 5
   _rotationSpeed: 15
   _followCamera: {fileID: 8321186397376360439}
   _Player: {fileID: 3009494833065405390}
   _meshName: Gobo_Tpose
-  _isGrappling: 0
   _isAttacking: 0
   _IsRunning: 0
   _IsJumping: 0

@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UIElements;
+
+
 
 public class MainMenu : MonoBehaviour
 {
@@ -13,12 +14,16 @@ public class MainMenu : MonoBehaviour
     private void Start()
     {
         musicSettings.SetActive(false);
+        
     }
     public void StartGame()
     {
 
         PlayerPrefs.DeleteAll();
+        ResetPlayer();
+        Cursor.lockState = CursorLockMode.Locked;
         SceneManager.LoadScene("MainLevel");
+
     }
 
     public void OpenSoundSettings()
@@ -32,5 +37,17 @@ public class MainMenu : MonoBehaviour
     {
         mainMenu.SetActive(true);
         musicSettings.SetActive(false);
+    }
+
+    private void ResetPlayer()
+    {
+
+        _playerMovement._hasUnlockedDoubleJump = false;
+        _playerMovement._movementSpeed = 6.0f;
+        _playerMovement. _jumpforce = 3.0f;
+        BreakableObject._copperValue = 100;
+        BreakableObject._silverValue = 500;
+        BreakableObject._goldValue = 1000;
+        _playerAttack._playerAttackPower = 0;
     }
 }
