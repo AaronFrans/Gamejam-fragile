@@ -1,6 +1,6 @@
 using System;
 using UnityEngine;
-
+using UnityEditor;
 
 public class _playerMovement : MonoBehaviour
 {
@@ -9,6 +9,8 @@ public class _playerMovement : MonoBehaviour
 
     [SerializeField]
     static public float _movementSpeed = 6.0f;
+
+    [SerializeField] public Transform _meshTransform;
     
 
     [SerializeField]
@@ -136,8 +138,7 @@ public class _playerMovement : MonoBehaviour
         { 
            
             var sphereCastVerticalOffset = _controller.height / 2 - _controller.radius;
-            var castOrigin = transform.position - new Vector3(0, sphereCastVerticalOffset, 0);
-            Debug.DrawLine(new Vector3(castOrigin.z, _controller.radius - 0.01f, castOrigin.z), castOrigin, Color.red, 3f);
+            var castOrigin = _meshTransform.position - new Vector3(0, sphereCastVerticalOffset, 0);
 
 
 
@@ -149,12 +150,12 @@ public class _playerMovement : MonoBehaviour
 
                 //Debug angle of surface and the normal of that surface
 
-               //Debug.DrawLine(hit.point, hit.point + hit.normal, Color.black, 3f);
-               //OnNextDrawGizmos += () =>
-               //{
-               //    GUI.color = Color.black;
-               //    Handles.Label(transform.position + new Vector3(0, 2f, 0), "Angle: " + angle.ToString());
-               //};
+               Debug.DrawLine(hit.point, hit.point + hit.normal, Color.black, 3f);
+               OnNextDrawGizmos += () =>
+               {
+                   GUI.color = Color.black;
+                   Handles.Label(transform.position + new Vector3(0, 2f, 0), "Angle: " + angle.ToString());
+               };
 
 
                 if(angle > _controller.slopeLimit)
