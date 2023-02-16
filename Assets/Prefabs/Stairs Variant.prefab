@@ -62,18 +62,48 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7522201472281615233, guid: bdd3bf868e717604faed10ffcff1a418, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.055
+      value: 0.004
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4973478253536904476, guid: bdd3bf868e717604faed10ffcff1a418, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 281169098712262849}
   m_SourcePrefab: {fileID: 100100000, guid: bdd3bf868e717604faed10ffcff1a418, type: 3}
 --- !u!4 &621466318604081739 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: bdd3bf868e717604faed10ffcff1a418, type: 3}
   m_PrefabInstance: {fileID: 1086877343789186464}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &5336771268572870844 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4973478253536904476, guid: bdd3bf868e717604faed10ffcff1a418, type: 3}
+  m_PrefabInstance: {fileID: 1086877343789186464}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &281169098712262849
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5336771268572870844}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 7601816073882130057, guid: bdd3bf868e717604faed10ffcff1a418, type: 3}
 --- !u!1001 &8630832163310512330
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -131,8 +161,12 @@ PrefabInstance:
       value: Stairs Variant
       objectReference: {fileID: 0}
     - target: {fileID: 3451118302482216456, guid: fcc5d4d14be94b64fae31a28ba7bc324, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 4114084426733683157, guid: eaa1a8d998cb6e545b8b9acfef7c7f30, type: 3}
+    - target: {fileID: 3451118302482216456, guid: fcc5d4d14be94b64fae31a28ba7bc324, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
