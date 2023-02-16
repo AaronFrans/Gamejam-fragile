@@ -14,43 +14,44 @@ public class _MixerController : MonoBehaviour
     public Slider _masterSlider, _backgroundSlider, _ambientSlider, _soundEffectSlider;
     private float _masterFloat, _backgroundFloat, _ambientFloat, _soundEffectFloat;
 
-    public AudioSource _backgroundAudio;
-    public AudioSource[] _soundeffectaudio;
+    [SerializeField]
+    public AudioMixer _mixer;
 
     // Start is called before the first frame update
     void Start()
     {
-        _masterFloat = 1f;
-        _backgroundFloat = 1f;
-        _ambientFloat = 1f;
-        _soundEffectFloat = 1f;
 
-        _masterSlider.value = _masterFloat;
-        _backgroundSlider.value = _backgroundFloat;
-        _ambientSlider.value = _ambientFloat;
-        _soundEffectSlider.value = _soundEffectFloat;
-
-        
+        _masterSlider.value = 1f;
+        _backgroundSlider.value = 1f;
+        _ambientSlider.value = 1f;
+        _soundEffectSlider.value = 1f;
     }
 
-    public void UpdateSound()
-    {
-        _backgroundAudio.volume = _backgroundSlider.value;
-
-        for(int i = 0; i < _soundeffectaudio.Length; ++i)
-        {
-            _soundeffectaudio[i].volume = _soundEffectSlider.value;
-        }
-    }
 
     // Update is called once per frame
     void Update()
     {
-        
+        _mixer.SetFloat("Master", _masterSlider.value);
+        _mixer.SetFloat("Music", _backgroundSlider.value);
+        _mixer.SetFloat("Ambi", _ambientSlider.value);
+        _mixer.SetFloat("SFX", _soundEffectSlider.value);
     }
 
-    public void SetVolume(float sliderValue)
+    public void UpdateMaster(float newVal)
     {
-        //_audioMixer.SetFloat("Master", Mathf.Log10(sliderValue) * 20);
+        _mixer.SetFloat("Master", newVal);
+    }
+
+    public void UpdateMusic(float newVal)
+    {
+        _mixer.SetFloat("Music", newVal);
+    }
+    public void UpdateAmbi(float newVal)
+    {
+        _mixer.SetFloat("Ambi", newVal);
+    }
+    public void UpdateSFX(float newVal)
+    {
+        _mixer.SetFloat("SFX", newVal);
     }
 }
