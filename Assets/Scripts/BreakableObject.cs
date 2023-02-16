@@ -99,6 +99,7 @@ public class BreakableObject : MonoBehaviour
                 DetermineCoins();
                 InstantiateCoins();
                 _breakAudio.Play();
+                Timer._hasStarted = true;
                 _hasInstantiated = true;
             }
             Destroy(gameObject, _breakAudio.clip.length);

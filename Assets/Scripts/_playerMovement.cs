@@ -44,16 +44,8 @@ public class _playerMovement : MonoBehaviour
     int _amountJumped;
     static public bool _hasUnlockedDoubleJump = false;
 
-    static public bool _hasUnlockedGrappleHook = false;
-    static public bool _hasUnlockedSpeedBoost = false;
-    static public bool _hasUnlockedExtraDamage = false;
-    static public bool _hasUnlockedExtraCoinValue = false;
-
-
-    public bool _isGrappling;
     public bool _isAttacking;
     
-
     public bool _IsRunning = false;
     public bool _IsJumping = false;
 

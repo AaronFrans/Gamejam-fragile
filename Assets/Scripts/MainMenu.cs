@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UIElements;
+
+
 
 public class MainMenu : MonoBehaviour
 {
@@ -13,12 +14,15 @@ public class MainMenu : MonoBehaviour
     private void Start()
     {
         musicSettings.SetActive(false);
+        
     }
     public void StartGame()
     {
 
         PlayerPrefs.DeleteAll();
+        Cursor.lockState = CursorLockMode.Locked;
         SceneManager.LoadScene("MainLevel");
+
     }
 
     public void OpenSoundSettings()
